@@ -74,31 +74,32 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    html {
-      scroll-behavior: auto;
-      background: var(--maroon-deep);
+    html,
+    body {
       width: 100%;
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
       overflow-x: hidden;
     }
 
-    body {
-      margin: 0;
-      width: 100%;
-      max-width: 100vw;
+    html {
+      background: var(--maroon-deep);
+      scroll-behavior: auto;
+    }
 
+    body {
+      min-height: 100%;
       background:
         radial-gradient(
-          ellipse at 50% 15%,
-          rgba(120, 25, 50, .22),
-          transparent 55%
+          circle at 50% 35%,
+          rgba(104, 21, 45, .28),
+          transparent 45%
         ),
         var(--maroon);
 
       color: var(--cream);
-
       font-family: "Cormorant Garamond", serif;
-
-      overflow-x: hidden;
 
       -webkit-text-size-adjust: 100%;
       text-size-adjust: 100%;
@@ -123,22 +124,30 @@
     main {
       position: relative;
       width: 100%;
-      max-width: 100vw;
+      max-width: 100%;
       overflow-x: hidden;
     }
 
+    /*
+      IMPORTANT:
+      Do NOT put safe-area left/right padding on every section.
+      Doing that shifts the section's coordinate system on iPhones.
+    */
+
     main section {
       position: relative;
+
       width: 100%;
-      max-width: 100vw;
+      max-width: 100%;
+      min-width: 0;
 
       min-height: 100vh;
       min-height: 100dvh;
 
       overflow: hidden;
 
-      padding-left: var(--safe-l);
-      padding-right: var(--safe-r);
+      padding-left: 0;
+      padding-right: 0;
     }
 
     main section::before {
@@ -147,8 +156,8 @@
       position: absolute;
       inset: 0;
 
-      pointer-events: none;
       z-index: 1;
+      pointer-events: none;
 
       background-image:
         radial-gradient(
@@ -205,7 +214,6 @@
         );
 
       overflow: hidden;
-
       text-align: center;
     }
 
@@ -215,13 +223,12 @@
       position: absolute;
 
       inset:
-        max(20px, var(--safe-t) + 14px)
-        max(20px, var(--safe-r) + 14px)
-        max(20px, var(--safe-b) + 14px)
-        max(20px, var(--safe-l) + 14px);
+        max(20px, calc(var(--safe-t) + 14px))
+        max(20px, calc(var(--safe-r) + 14px))
+        max(20px, calc(var(--safe-b) + 14px))
+        max(20px, calc(var(--safe-l) + 14px));
 
       border: 1px solid rgba(212, 175, 55, .28);
-
       pointer-events: none;
     }
 
@@ -231,25 +238,18 @@
       position: absolute;
 
       inset:
-        max(30px, var(--safe-t) + 24px)
-        max(30px, var(--safe-r) + 24px)
-        max(30px, var(--safe-b) + 24px)
-        max(30px, var(--safe-l) + 24px);
+        max(30px, calc(var(--safe-t) + 24px))
+        max(30px, calc(var(--safe-r) + 24px))
+        max(30px, calc(var(--safe-b) + 24px))
+        max(30px, calc(var(--safe-l) + 24px));
 
       border: 1px solid rgba(212, 175, 55, .10);
-
       pointer-events: none;
     }
 
-    /*
-      IMPORTANT:
-      The cover contents are wrapped in one centered group.
-      This keeps the complete invitation centered on phones,
-      rather than centering each element against the viewport.
-    */
-
     .cover-content {
       position: relative;
+
       z-index: 3;
 
       width: min(440px, 88vw);
@@ -261,7 +261,7 @@
 
       text-align: center;
 
-      transform: translateY(0);
+      margin: 0 auto;
     }
 
     .cover-top {
@@ -277,6 +277,8 @@
 
       letter-spacing: .32em;
       text-transform: uppercase;
+
+      text-align: center;
     }
 
     .env-names {
@@ -291,8 +293,7 @@
 
       text-align: center;
 
-      text-shadow:
-        0 2px 12px rgba(0, 0, 0, .25);
+      text-shadow: 0 2px 12px rgba(0, 0, 0, .25);
     }
 
     .env-wrap {
@@ -303,9 +304,9 @@
 
       aspect-ratio: 1.55;
 
-      perspective: 1000px;
-
       margin: 0 auto;
+
+      perspective: 1000px;
     }
 
     .env-back {
@@ -350,8 +351,7 @@
           0 100%
         );
 
-      border-bottom:
-        1px solid rgba(212, 175, 55, .45);
+      border-bottom: 1px solid rgba(212, 175, 55, .45);
     }
 
     .env-flap {
@@ -375,8 +375,7 @@
           50% 58%
         );
 
-      border-top:
-        1px solid rgba(212, 175, 55, .5);
+      border-top: 1px solid rgba(212, 175, 55, .5);
 
       z-index: 4;
     }
@@ -415,7 +414,6 @@
         inset 0 0 0 4px rgba(212, 175, 55, .1);
 
       font-family: "Cormorant Garamond", serif;
-
       font-size: clamp(15px, 3.6vw, 18px);
       font-weight: 600;
 
@@ -430,8 +428,8 @@
       color: var(--muted);
 
       font-family: "Jost", sans-serif;
-
       font-size: 9px;
+
       letter-spacing: .32em;
 
       text-align: center;
@@ -439,7 +437,7 @@
 
 
     /* =====================================================
-       FLORAL CORNERS
+       FLORAL DECORATION
     ===================================================== */
 
     .floral-edge {
@@ -448,68 +446,59 @@
       width: 230px;
       height: 230px;
 
+      z-index: 3;
+
       pointer-events: none;
 
-      z-index: 0;
-
-      opacity: .72;
-
-      transform-origin: center;
-
-      filter:
-        drop-shadow(
-          0 2px 4px rgba(0, 0, 0, .10)
-        );
+      opacity: .78;
     }
 
     .floral-tl {
-      top: -30px;
-      left: -28px;
+      top: -25px;
+      left: -25px;
     }
 
     .floral-tr {
-      top: -30px;
-      right: -28px;
+      top: -25px;
+      right: -25px;
+
       transform: scaleX(-1);
     }
 
     .floral-bl {
-      bottom: -30px;
-      left: -28px;
+      bottom: -25px;
+      left: -25px;
+
       transform: scaleY(-1);
     }
 
     .floral-br {
-      bottom: -30px;
-      right: -28px;
+      right: -25px;
+      bottom: -25px;
+
       transform: scale(-1);
     }
 
     .floral-stem {
       position: absolute;
 
-      left: 23px;
-      top: 5px;
+      left: 17px;
+      top: 3px;
 
-      width: 4px;
-      height: 215px;
+      width: 3px;
+      height: 210px;
 
       background:
         linear-gradient(
           to bottom,
-          transparent 0%,
-          var(--leaf-light) 8%,
-          var(--leaf) 38%,
-          var(--leaf-dark) 100%
+          var(--leaf-light),
+          var(--leaf-dark)
         );
 
-      border-radius: 999px;
+      border-radius: 3px;
 
-      transform: rotate(43deg);
-
+      transform: rotate(-7deg);
       transform-origin: top center;
-
-      opacity: .9;
     }
 
     .floral-stem::before {
@@ -517,376 +506,286 @@
 
       position: absolute;
 
-      left: 1px;
-      top: 70px;
+      width: 2px;
+      height: 120px;
 
-      width: 3px;
-      height: 115px;
+      left: 9px;
+      top: 48px;
 
-      background:
-        linear-gradient(
-          to bottom,
-          var(--leaf),
-          var(--leaf-dark)
-        );
+      background: var(--leaf);
 
-      border-radius: 999px;
-
-      transform: rotate(-48deg);
-
-      transform-origin: top;
+      transform: rotate(25deg);
+      transform-origin: top center;
     }
 
     .floral-twig {
       position: absolute;
 
+      width: 65px;
       height: 2px;
-      width: 72px;
 
-      background:
-        linear-gradient(
-          to right,
-          var(--leaf-dark),
-          var(--leaf)
-        );
-
-      border-radius: 999px;
+      background: var(--leaf);
 
       transform-origin: left center;
+      border-radius: 2px;
     }
 
     .twig-1 {
-      left: 38px;
-      top: 55px;
-      transform: rotate(-25deg);
+      left: 17px;
+      top: 47px;
+      transform: rotate(-28deg);
     }
 
     .twig-2 {
-      left: 50px;
-      top: 92px;
-      transform: rotate(27deg);
+      left: 19px;
+      top: 82px;
+      transform: rotate(-38deg);
     }
 
     .twig-3 {
-      left: 28px;
-      top: 130px;
-      transform: rotate(-21deg);
+      left: 18px;
+      top: 120px;
+      transform: rotate(-22deg);
     }
 
     .twig-4 {
-      left: 65px;
-      top: 168px;
-      transform: rotate(24deg);
+      left: 20px;
+      top: 157px;
+      transform: rotate(-42deg);
     }
 
     .twig-5 {
-      left: 18px;
-      top: 205px;
-      width: 58px;
-      transform: rotate(-15deg);
+      left: 22px;
+      top: 190px;
+      width: 52px;
+      transform: rotate(-18deg);
     }
 
     .floral-leaf {
       position: absolute;
 
-      width: 42px;
-      height: 19px;
+      width: 36px;
+      height: 17px;
 
       background:
         linear-gradient(
           135deg,
           var(--leaf-light),
-          var(--leaf),
           var(--leaf-dark)
         );
 
       border-radius: 100% 0 100% 0;
 
       box-shadow:
-        inset -3px -2px 0 rgba(255, 255, 255, .08),
-        0 1px 3px rgba(0, 0, 0, .12);
-    }
-
-    .floral-leaf::after {
-      content: "";
-
-      position: absolute;
-
-      left: 5px;
-      top: 50%;
-
-      width: 31px;
-      height: 1px;
-
-      background: rgba(255, 255, 255, .18);
-
-      transform: rotate(-15deg);
+        inset 0 0 0 1px rgba(255, 255, 255, .08);
     }
 
     .leaf-1 {
-      left: 50px;
-      top: 27px;
-      transform: rotate(-23deg);
+      left: 43px;
+      top: 35px;
+      transform: rotate(-35deg);
     }
 
     .leaf-2 {
-      left: 10px;
-      top: 54px;
-      transform: rotate(30deg);
+      left: 56px;
+      top: 59px;
+      transform: rotate(15deg);
     }
 
     .leaf-3 {
-      left: 62px;
-      top: 70px;
-      transform: rotate(-13deg) scale(.9);
+      left: 39px;
+      top: 77px;
+      transform: rotate(-48deg);
     }
 
     .leaf-4 {
-      left: 20px;
-      top: 98px;
-      transform: rotate(35deg) scale(.88);
+      left: 58px;
+      top: 101px;
+      transform: rotate(20deg);
     }
 
     .leaf-5 {
-      left: 75px;
-      top: 118px;
-      transform: rotate(-20deg) scale(.8);
+      left: 42px;
+      top: 119px;
+      transform: rotate(-42deg);
     }
 
     .leaf-6 {
-      left: 25px;
-      top: 145px;
-      transform: rotate(30deg) scale(.75);
+      left: 60px;
+      top: 142px;
+      transform: rotate(18deg);
     }
 
     .leaf-7 {
-      left: 83px;
-      top: 163px;
-      transform: rotate(-15deg) scale(.68);
+      left: 46px;
+      top: 161px;
+      transform: rotate(-35deg);
     }
 
     .leaf-8 {
-      left: 34px;
-      top: 187px;
-      transform: rotate(28deg) scale(.62);
+      left: 61px;
+      top: 181px;
+      transform: rotate(20deg);
     }
 
     .leaf-9 {
-      left: 91px;
-      top: 201px;
-      transform: rotate(-18deg) scale(.55);
+      left: 46px;
+      top: 200px;
+      transform: rotate(-35deg);
     }
 
     .floral-flower {
       position: absolute;
 
-      width: 58px;
-      height: 58px;
+      width: 48px;
+      height: 48px;
 
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .flower-a {
-      left: 72px;
-      top: 0;
+      left: 84px;
+      top: 25px;
     }
 
     .flower-b {
-      left: 0;
-      top: 48px;
-      transform: scale(.82);
+      left: 102px;
+      top: 70px;
     }
 
     .flower-c {
-      left: 79px;
-      top: 78px;
-      transform: scale(.72);
+      left: 76px;
+      top: 108px;
     }
 
     .flower-d {
-      left: 3px;
-      top: 120px;
-      transform: scale(.63);
+      left: 111px;
+      top: 138px;
     }
 
     .flower-e {
-      left: 86px;
-      top: 148px;
-      transform: scale(.55);
+      left: 83px;
+      top: 172px;
     }
 
     .flower-f {
-      left: 24px;
-      top: 184px;
-      transform: scale(.48);
+      left: 135px;
+      top: 45px;
     }
 
     .flower-g {
-      left: 124px;
-      top: 38px;
-      transform: scale(.40);
+      left: 136px;
+      top: 105px;
     }
 
     .floral-flower i {
       position: absolute;
 
-      left: 50%;
-      top: 50%;
+      width: 18px;
+      height: 27px;
 
-      width: 23px;
-      height: 33px;
+      border-radius: 100% 100% 40% 40%;
 
-      margin: -16.5px 0 0 -11.5px;
+      margin:
+        -13.5px
+        0
+        0
+        -9px;
 
-      border-radius: 52% 52% 48% 48%;
-
-      transform-origin: 50% 50%;
+      transform-origin: 9px 13.5px;
     }
 
     .floral-flower i:nth-child(1) {
-      transform: rotate(0deg) translateY(-12px);
+      transform: rotate(0deg) translateY(-9px);
     }
 
     .floral-flower i:nth-child(2) {
-      transform: rotate(72deg) translateY(-12px);
+      transform: rotate(72deg) translateY(-9px);
     }
 
     .floral-flower i:nth-child(3) {
-      transform: rotate(144deg) translateY(-12px);
+      transform: rotate(144deg) translateY(-9px);
     }
 
     .floral-flower i:nth-child(4) {
-      transform: rotate(216deg) translateY(-12px);
+      transform: rotate(216deg) translateY(-9px);
     }
 
     .floral-flower i:nth-child(5) {
-      transform: rotate(288deg) translateY(-12px);
+      transform: rotate(288deg) translateY(-9px);
     }
 
     .floral-white i {
       background:
-        linear-gradient(
-          145deg,
-          #f8e59a 0%,
-          var(--gold-light) 48%,
-          var(--gold) 100%
+        radial-gradient(
+          ellipse at 40% 35%,
+          #fffdf4,
+          #eadfca
         );
-
-      border: 1px solid rgba(240, 215, 123, .65);
-
-      box-shadow:
-        0 2px 5px rgba(0, 0, 0, .12);
     }
 
     .floral-maroon i {
       background:
-        linear-gradient(
-          145deg,
-          #a43857 0%,
-          var(--petal-maroon) 48%,
-          var(--petal-maroon-dark) 100%
+        radial-gradient(
+          ellipse at 40% 35%,
+          #a63858,
+          var(--petal-maroon-dark)
         );
-
-      border: 1px solid rgba(240, 215, 123, .15);
-
-      box-shadow:
-        0 2px 5px rgba(0, 0, 0, .15);
     }
 
     .floral-flower b {
       position: absolute;
 
-      left: 50%;
-      top: 50%;
-
-      width: 11px;
-      height: 11px;
-
-      transform: translate(-50%, -50%);
+      width: 9px;
+      height: 9px;
 
       border-radius: 50%;
 
-      background:
-        radial-gradient(
-          circle at 35% 30%,
-          #fff9dc 0%,
-          var(--gold-light) 42%,
-          var(--gold-dark) 100%
-        );
+      background: var(--gold);
 
       box-shadow:
-        0 0 0 2px rgba(212, 175, 55, .12),
-        0 1px 3px rgba(0, 0, 0, .16);
+        0 0 5px rgba(212, 175, 55, .45);
     }
 
     .floral-bud {
       position: absolute;
 
-      width: 9px;
-      height: 9px;
-
-      border-radius: 50% 50% 45% 45%;
-
-      background:
-        linear-gradient(
-          145deg,
-          var(--petal-maroon),
-          var(--petal-maroon-dark)
-        );
-
-      border: 1px solid rgba(240, 215, 123, .18);
-
-      box-shadow:
-        0 1px 3px rgba(0, 0, 0, .14);
-    }
-
-    .bud-1 {
-      left: 150px;
-      top: 30px;
-    }
-
-    .bud-2 {
-      left: 137px;
-      top: 103px;
-    }
-
-    .bud-3 {
-      left: 118px;
-      top: 181px;
-    }
-
-    .bud-4 {
-      left: 47px;
-      top: 211px;
-    }
-
-    .floral-edge::after {
-      content: "";
-
-      position: absolute;
-
-      width: 3px;
-      height: 3px;
-
-      left: 30px;
-      top: 35px;
+      width: 8px;
+      height: 8px;
 
       border-radius: 50%;
 
-      background: var(--gold-light);
+      background: var(--gold);
 
       box-shadow:
-        12px 10px 0 var(--gold-light),
-        -6px 22px 0 var(--gold-light),
-        23px 45px 0 rgba(240, 215, 123, .65),
-        40px 68px 0 rgba(240, 215, 123, .45);
+        0 0 5px rgba(212, 175, 55, .35);
+    }
 
-      opacity: .55;
+    .bud-1 {
+      left: 76px;
+      top: 12px;
+    }
+
+    .bud-2 {
+      left: 127px;
+      top: 24px;
+    }
+
+    .bud-3 {
+      left: 94px;
+      top: 198px;
+    }
+
+    .bud-4 {
+      left: 150px;
+      top: 157px;
     }
 
 
     /* =====================================================
-       BACKGROUND PATTERN
+       PATTERN
     ===================================================== */
 
     .pattern {
@@ -894,9 +793,9 @@
 
       inset: 0;
 
-      pointer-events: none;
-
       z-index: 2;
+
+      pointer-events: none;
 
       opacity: .075;
 
@@ -909,17 +808,17 @@
         ),
         linear-gradient(
           45deg,
-          transparent 46%,
-          rgba(212, 175, 55, .28) 47%,
-          rgba(212, 175, 55, .28) 48%,
-          transparent 49%
+          rgba(212, 175, 55, .06) 25%,
+          transparent 25%,
+          transparent 75%,
+          rgba(212, 175, 55, .06) 75%
         ),
         linear-gradient(
           -45deg,
-          transparent 46%,
-          rgba(212, 175, 55, .20) 47%,
-          rgba(212, 175, 55, .20) 48%,
-          transparent 49%
+          rgba(212, 175, 55, .04) 25%,
+          transparent 25%,
+          transparent 75%,
+          rgba(212, 175, 55, .04) 75%
         );
 
       background-size:
@@ -936,118 +835,113 @@
     ===================================================== */
 
     #hero {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 100%;
-  min-width: 0;
-
-  padding-left: 0;
-  padding-right: 0;
-
-  text-align: center;
-
-  background:
-    radial-gradient(
-      ellipse at 50% 40%,
-      #64152d 0%,
-      #4b0a1d 42%,
-      #300510 100%
-    );
-}
-
-.hero-inner {
-  position: relative;
-
-  width: min(760px, calc(100vw - 40px));
-  max-width: 760px;
-  min-width: 0;
-
-  margin-left: auto;
-  margin-right: auto;
-
-  padding:
-    clamp(70px, 14vw, 90px)
-    0
-    clamp(56px, 11vw, 80px);
-
-  text-align: center;
-}
-
-    .bismillah {
-      margin-bottom: clamp(10px, 3vw, 14px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       width: 100%;
+      min-width: 0;
+
+      padding: 0;
+
+      text-align: center;
+
+      background:
+        radial-gradient(
+          ellipse at 50% 40%,
+          #64152d 0%,
+          #4b0a1d 42%,
+          #300510 100%
+        );
+    }
+
+    .hero-inner {
+      position: relative;
+
+      width: min(760px, calc(100vw - 40px));
+      max-width: 760px;
+      min-width: 0;
+
+      margin: 0 auto;
+
+      padding:
+        clamp(70px, 14vw, 90px)
+        0
+        clamp(56px, 11vw, 80px);
+
+      text-align: center;
+    }
+
+    .bismillah {
+      margin-bottom: 17px;
 
       color: var(--gold-light);
 
-      font-family: "Cormorant Garamond", serif;
-
-      font-style: italic;
+      font-family: "Jost", sans-serif;
+      font-size: 11px;
       font-weight: 400;
 
-      font-size: clamp(13px, 3.6vw, 15px);
+      letter-spacing: .14em;
+      line-height: 1.7;
 
-      line-height: 1.55;
+      text-align: center;
     }
 
     .together {
-      width: 100%;
+      margin-bottom: 8px;
 
       color: var(--muted);
 
       font-family: "Jost", sans-serif;
-
-      font-size: clamp(8px, 2.4vw, 10px);
+      font-size: 10px;
 
       letter-spacing: .22em;
       text-transform: uppercase;
+
+      text-align: center;
     }
 
     .monogram {
-      margin-top: clamp(20px, 5vw, 28px);
+      margin-top: 14px;
 
-      color: var(--gold);
+      color: var(--gold-light);
 
-      font-size: clamp(44px, 11vw, 65px);
+      font-size: 42px;
+      line-height: 1;
 
-      line-height: .9;
+      text-align: center;
     }
 
     .hero-names {
-      margin-top: clamp(14px, 4vw, 20px);
-
-      width: 100%;
+      margin-top: 16px;
 
       color: var(--cream);
 
-      font-size: clamp(38px, 11vw, 76px);
-
+      font-size: clamp(42px, 8vw, 70px);
       font-weight: 400;
 
-      line-height: 1.05;
+      line-height: .95;
 
-      overflow-wrap: break-word;
+      text-align: center;
+
+      text-shadow:
+        0 3px 20px rgba(0, 0, 0, .25);
     }
 
     .hero-names span {
-      color: var(--gold);
-      font-style: italic;
+      color: var(--gold-light);
+      font-weight: 300;
     }
 
     .divider {
       width: 100px;
       height: 1px;
 
-      margin:
-        clamp(20px, 5vw, 28px)
-        auto;
+      margin: 25px auto;
 
       background:
         linear-gradient(
-          to right,
+          90deg,
           transparent,
           var(--gold),
           transparent
@@ -1057,94 +951,102 @@
     .request-line {
       color: var(--cream-soft);
 
-      font-size: clamp(14px, 3.6vw, 17px);
+      font-family: "Jost", sans-serif;
+      font-size: 11px;
+      font-weight: 300;
 
-      line-height: 1.6;
+      letter-spacing: .08em;
+      line-height: 1.8;
+
+      text-align: center;
     }
 
     .hero-date {
-      margin-top: clamp(18px, 5vw, 25px);
+      margin-top: 23px;
 
       color: var(--gold-light);
 
-      font-size: clamp(48px, 14vw, 74px);
-
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(62px, 13vw, 90px);
       font-weight: 300;
 
-      line-height: .85;
+      line-height: .8;
+
+      text-align: center;
     }
 
     .hero-daymonth {
-      margin-top: 9px;
-
-      width: 100%;
+      margin-top: 15px;
 
       color: var(--cream);
 
       font-family: "Jost", sans-serif;
+      font-size: 10px;
+      font-weight: 500;
 
-      font-size: clamp(8px, 2.2vw, 10px);
+      letter-spacing: .24em;
 
-      letter-spacing: .2em;
+      text-align: center;
     }
 
     .hero-venue-line {
-      margin-top: clamp(18px, 5vw, 25px);
-
-      width: 100%;
+      margin-top: 17px;
 
       color: var(--muted);
 
       font-family: "Jost", sans-serif;
+      font-size: 10px;
+      font-weight: 300;
 
-      font-size: clamp(8px, 2.2vw, 10px);
+      letter-spacing: .08em;
+      line-height: 1.8;
 
-      line-height: 1.9;
-
-      letter-spacing: .1em;
-
-      text-transform: uppercase;
+      text-align: center;
     }
 
     .hashtag {
-      margin-top: clamp(18px, 5vw, 25px);
+      margin-top: 25px;
 
-      width: 100%;
-
-      color: var(--gold);
+      color: var(--gold-light);
 
       font-family: "Jost", sans-serif;
-
-      font-size: clamp(10px, 2.6vw, 11px);
+      font-size: 11px;
+      font-weight: 500;
 
       letter-spacing: .22em;
+
+      text-align: center;
     }
 
     .scrollcue {
       position: absolute;
 
-      bottom: calc(18px + var(--safe-b));
-
       left: 50%;
+      bottom: max(22px, calc(var(--safe-b) + 14px));
 
       transform: translateX(-50%);
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
       color: var(--muted);
 
       font-family: "Jost", sans-serif;
-
       font-size: 8px;
 
       letter-spacing: .3em;
 
-      text-align: center;
+      white-space: nowrap;
+
+      z-index: 10;
     }
 
     .scroll-line {
       width: 1px;
-      height: 30px;
+      height: 34px;
 
-      margin: 8px auto 0;
+      margin-top: 8px;
 
       background:
         linear-gradient(
@@ -1161,100 +1063,110 @@
 
     #countdown {
       display: flex;
-
       align-items: center;
       justify-content: center;
 
+      width: 100%;
+
+      text-align: center;
+
       background:
         radial-gradient(
-          circle at 50% 50%,
-          #5a1027 0%,
-          #3b0717 55%,
-          #28030d 100%
+          ellipse at 50% 50%,
+          #64152d 0%,
+          #4a0a1c 45%,
+          #2d040f 100%
         );
     }
 
     .cd-wrap {
       width: min(900px, 90vw);
+      max-width: 900px;
 
-      text-align: center;
+      margin: 0 auto;
 
       padding:
-        clamp(56px, 12vw, 80px)
-        12px;
+        70px
+        20px;
+
+      text-align: center;
     }
 
     .cd-script {
       color: var(--gold-light);
 
-      font-size: clamp(40px, 10vw, 72px);
-
+      font-size: clamp(42px, 8vw, 64px);
       line-height: 1;
+
+      text-align: center;
     }
 
     .cd-until {
-      margin-top: 15px;
-
-      width: 100%;
+      margin-top: 12px;
 
       color: var(--muted);
 
       font-family: "Jost", sans-serif;
+      font-size: 10px;
 
-      font-size: clamp(8px, 2.2vw, 9px);
+      letter-spacing: .25em;
 
-      letter-spacing: .24em;
+      text-align: center;
     }
 
     .cd-grid {
       display: grid;
 
       grid-template-columns:
-        1fr auto 1fr auto 1fr auto 1fr;
+        1fr auto
+        1fr auto
+        1fr auto
+        1fr;
 
       align-items: center;
 
-      margin-top:
-        clamp(36px, 9vw, 55px);
+      width: 100%;
+
+      margin-top: 48px;
     }
 
     .cd-cell {
-      padding: 10px clamp(6px, 2vw, 20px);
+      padding: 10px;
+
+      text-align: center;
     }
 
     .cd-num {
       color: var(--cream);
 
-      font-size: clamp(34px, 9vw, 70px);
-
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(42px, 8vw, 68px);
       font-weight: 300;
 
       line-height: 1;
+
+      text-align: center;
     }
 
     .cd-label {
       margin-top: 8px;
 
-      color: var(--muted);
+      color: var(--gold-light);
 
       font-family: "Jost", sans-serif;
+      font-size: 8px;
+      font-weight: 500;
 
-      font-size: clamp(7px, 1.8vw, 8px);
+      letter-spacing: .25em;
 
-      letter-spacing: .22em;
+      text-align: center;
     }
 
     .cd-divider {
       width: 1px;
-      height: 45px;
+      height: 35px;
 
-      background:
-        linear-gradient(
-          to bottom,
-          transparent,
-          var(--gold),
-          transparent
-        );
+      background: rgba(212, 175, 55, .4);
     }
 
 
@@ -1264,101 +1176,101 @@
 
     #celebration {
       display: flex;
-
       align-items: center;
       justify-content: center;
 
       background:
         radial-gradient(
-          circle at 50% 40%,
+          ellipse at 50% 45%,
           #68152d 0%,
-          #45091c 50%,
-          #2b040f 100%
+          #4b0a1c 45%,
+          #2f050f 100%
         );
+
+      text-align: center;
     }
 
     .celebration-wrap {
-      width: min(650px, 90vw);
+      width: min(760px, calc(100vw - 40px));
 
-      text-align: center;
+      margin: 0 auto;
 
       padding:
-        clamp(60px, 13vw, 90px)
-        12px
-        clamp(56px, 11vw, 80px);
+        70px
+        20px;
+
+      text-align: center;
     }
 
     .cel-kicker {
-      width: 100%;
-
       color: var(--gold-light);
 
       font-family: "Jost", sans-serif;
-
-      font-size: clamp(8px, 2.2vw, 9px);
+      font-size: 9px;
 
       letter-spacing: .3em;
-
       text-transform: uppercase;
     }
 
     .cel-title {
-      margin-top: 15px;
+      margin-top: 12px;
 
       color: var(--cream);
 
-      font-size: clamp(30px, 9vw, 58px);
+      font-family: "Jost", sans-serif;
+      font-size: 15px;
 
-      font-weight: 400;
+      letter-spacing: .12em;
+      text-transform: uppercase;
     }
 
     .cel-script {
       margin-top: 5px;
 
-      color: var(--gold);
+      color: var(--gold-light);
 
-      font-size: clamp(36px, 9vw, 65px);
+      font-size: clamp(42px, 8vw, 62px);
+      line-height: 1;
     }
 
     .cel-details {
       display: flex;
-
+      justify-content: center;
       flex-wrap: wrap;
 
-      justify-content: center;
+      gap: 35px 80px;
 
-      gap: clamp(28px, 7vw, 70px);
-
-      margin-top:
-        clamp(28px, 7vw, 38px);
+      margin-top: 40px;
     }
 
     .cel-detail {
-      min-width: 110px;
+      min-width: 140px;
+
+      text-align: center;
     }
 
     .cel-detail span {
       display: block;
 
-      color: var(--muted);
+      color: var(--gold-light);
 
       font-family: "Jost", sans-serif;
-
       font-size: 8px;
+      font-weight: 500;
 
-      letter-spacing: .22em;
+      letter-spacing: .25em;
     }
 
     .cel-detail strong {
       display: block;
 
-      margin-top: 10px;
+      margin-top: 9px;
 
       color: var(--cream);
 
-      font-size: clamp(16px, 4vw, 20px);
-
-      font-weight: 400;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 20px;
+      font-weight: 500;
     }
 
     .cel-detail small {
@@ -1369,21 +1281,18 @@
       color: var(--muted);
 
       font-family: "Jost", sans-serif;
-
       font-size: 9px;
     }
 
     .cel-divider {
-      width: 80px;
+      width: 70px;
       height: 1px;
 
-      margin:
-        clamp(24px, 6vw, 32px)
-        auto;
+      margin: 34px auto;
 
       background:
         linear-gradient(
-          to right,
+          90deg,
           transparent,
           var(--gold),
           transparent
@@ -1391,79 +1300,71 @@
     }
 
     .venue-art {
-      width: clamp(96px, 26vw, 130px);
+      width: 180px;
+      max-width: 70vw;
 
-      margin: 0 auto 15px;
-
-      color: var(--gold);
+      margin: 0 auto 16px;
     }
 
     .venue-art svg {
+      display: block;
+
       width: 100%;
+      height: auto;
 
-      stroke: currentColor;
-
-      stroke-width: 1.3;
+      stroke: var(--gold);
+      stroke-width: 1;
+      opacity: .9;
     }
 
     .venue-heading {
       color: var(--cream);
 
-      font-size: clamp(24px, 6.5vw, 31px);
+      font-size: 28px;
+      font-weight: 500;
+
+      text-align: center;
     }
 
     .venue-address {
-      margin-top: 5px;
-
-      width: 100%;
+      margin-top: 7px;
 
       color: var(--muted);
 
       font-family: "Jost", sans-serif;
-
-      font-size: clamp(9px, 2.4vw, 10px);
-
-      line-height: 1.8;
+      font-size: 10px;
 
       letter-spacing: .1em;
+      line-height: 1.8;
 
-      text-transform: uppercase;
+      text-align: center;
     }
 
     .maps-link {
       display: inline-block;
 
       margin-top: 22px;
-
-      padding: 12px 22px;
-
-      border:
-        1px solid rgba(212, 175, 55, .55);
+      padding: 11px 22px;
 
       color: var(--gold-light);
 
+      border: 1px solid rgba(212, 175, 55, .5);
+
       font-family: "Jost", sans-serif;
-
-      font-size: 9px;
-
+      font-size: 8px;
       font-weight: 500;
 
-      letter-spacing: .18em;
+      letter-spacing: .2em;
 
       transition:
         background .25s ease,
-        color .25s ease,
-        transform .2s ease;
+        color .25s ease;
     }
 
     .maps-link:hover,
     .maps-link:active {
-      background: var(--gold);
-      color: var(--maroon);
-    }
-
-    .maps-link:active {
-      transform: scale(.97);
+      color: var(--maroon-deep);
+      background: var(--gold-light);
     }
 
 
@@ -1473,122 +1374,128 @@
 
     #rsvp {
       display: flex;
-
       align-items: center;
       justify-content: center;
 
       background:
         radial-gradient(
-          ellipse at 50% 50%,
-          #551025 0%,
-          #350613 70%,
-          #26030c 100%
+          ellipse at 50% 45%,
+          #64152d 0%,
+          #4b0a1c 45%,
+          #300510 100%
         );
+
+      text-align: center;
     }
 
     .rsvp-wrap {
-      width: min(650px, 90vw);
+      width: min(700px, calc(100vw - 40px));
 
-      text-align: center;
+      margin: 0 auto;
 
       padding:
-        clamp(60px, 13vw, 90px)
-        12px;
+        70px
+        20px;
+
+      text-align: center;
     }
 
     .rsvp-script {
       color: var(--gold-light);
 
-      font-size: clamp(40px, 10vw, 70px);
-
+      font-size: clamp(46px, 9vw, 68px);
       line-height: 1;
     }
 
     .rsvp-title {
-      margin-top: 18px;
-
-      width: 100%;
+      margin-top: 12px;
 
       color: var(--cream);
 
-      font-size: clamp(18px, 4.6vw, 23px);
+      font-family: "Jost", sans-serif;
+      font-size: 14px;
+
+      letter-spacing: .08em;
     }
 
     .rsvp-text {
-      max-width: min(470px, 92vw);
+      max-width: 520px;
 
       margin: 18px auto 0;
 
       color: var(--muted);
 
-      font-size: clamp(14px, 3.6vw, 16px);
+      font-family: "Jost", sans-serif;
+      font-size: 10px;
+      font-weight: 300;
 
-      line-height: 1.65;
+      letter-spacing: .04em;
+      line-height: 1.9;
     }
 
     .rsvp-buttons {
       display: flex;
-
       justify-content: center;
-
-      gap: 14px;
+      align-items: center;
 
       flex-wrap: wrap;
+
+      gap: 14px;
 
       margin-top: 32px;
     }
 
     .rsvp-btn {
       display: inline-flex;
-
       align-items: center;
       justify-content: center;
 
-      min-width: 205px;
-      min-height: 46px;
+      min-height: 42px;
 
-      padding: 14px 20px;
+      width: min(260px, 42vw);
 
-      background: var(--gold);
+      padding: 12px 18px;
 
-      color: var(--maroon);
-
-      font-family: "Jost", sans-serif;
-
-      font-size: 9px;
-
-      font-weight: 600;
-
-      letter-spacing: .15em;
-
-      border:
-        1px solid var(--gold);
-
-      transition:
-        transform .2s ease,
-        background .25s ease,
-        color .25s ease;
-    }
-
-    .rsvp-btn:hover {
-      transform: translateY(-2px);
+      color: var(--maroon-deep);
 
       background: var(--gold-light);
+
+      border: 1px solid var(--gold-light);
+
+      font-family: "Jost", sans-serif;
+      font-size: 8px;
+      font-weight: 600;
+
+      letter-spacing: .18em;
+
+      transition:
+        background .25s ease,
+        color .25s ease,
+        transform .25s ease;
     }
 
+    .rsvp-btn:hover,
     .rsvp-btn:active {
-      transform: translateY(0) scale(.97);
+      color: var(--cream);
+
+      background: transparent;
+
+      transform: translateY(-1px);
     }
 
     .rsvp-btn.secondary {
-      background: transparent;
       color: var(--gold-light);
+
+      background: transparent;
+
+      border-color: rgba(212, 175, 55, .55);
     }
 
     .rsvp-btn.secondary:hover,
     .rsvp-btn.secondary:active {
-      background: var(--gold);
-      color: var(--maroon);
+      color: var(--maroon-deep);
+
+      background: var(--gold-light);
     }
 
 
@@ -1598,82 +1505,80 @@
 
     #closing {
       display: flex;
-
       align-items: center;
       justify-content: center;
 
       background:
         radial-gradient(
-          circle at center,
+          ellipse at 50% 45%,
           #64152d 0%,
-          #3a0716 60%,
-          #24020b 100%
+          #420818 48%,
+          #26030d 100%
         );
+
+      text-align: center;
     }
 
     .close-wrap {
-      width: min(600px, 90vw);
+      width: min(700px, calc(100vw - 40px));
 
-      text-align: center;
+      margin: 0 auto;
 
       padding:
-        clamp(60px, 13vw, 90px)
-        12px
-        calc(
-          clamp(60px, 13vw, 90px)
-          + var(--safe-b)
-        );
+        70px
+        20px;
+
+      text-align: center;
     }
 
     .close-script {
       color: var(--gold-light);
 
-      font-size: clamp(42px, 11vw, 75px);
-
+      font-size: clamp(48px, 10vw, 74px);
       line-height: 1;
     }
 
     .close-mono {
-      margin-top: 15px;
+      margin-top: 20px;
 
       color: var(--cream);
 
-      font-size: clamp(28px, 7vw, 48px);
+      font-size: 22px;
+      letter-spacing: .1em;
 
-      font-weight: 400;
+      text-align: center;
     }
 
     .close-hashtag {
-      margin-top: 25px;
+      margin-top: 20px;
 
-      width: 100%;
-
-      color: var(--gold);
+      color: var(--gold-light);
 
       font-family: "Jost", sans-serif;
+      font-size: 10px;
+      font-weight: 500;
 
-      font-size: clamp(10px, 2.6vw, 11px);
+      letter-spacing: .3em;
 
-      letter-spacing: .25em;
+      text-align: center;
     }
 
     .close-sub {
-      margin-top: 12px;
-
-      width: 100%;
+      margin-top: 14px;
 
       color: var(--muted);
 
       font-family: "Jost", sans-serif;
+      font-size: 8px;
 
-      font-size: clamp(8px, 2.2vw, 9px);
+      letter-spacing: .22em;
 
-      letter-spacing: .18em;
+      text-align: center;
     }
 
 
     /* =====================================================
-       NAVIGATION
+       DOT NAVIGATION
     ===================================================== */
 
     .dots {
@@ -1687,7 +1592,6 @@
       z-index: 500;
 
       display: flex;
-
       flex-direction: column;
 
       gap: 10px;
@@ -1701,9 +1605,7 @@
 
       padding: 0;
 
-      border:
-        1px solid rgba(240, 215, 123, .6);
-
+      border: 1px solid rgba(240, 215, 123, .7);
       border-radius: 50%;
 
       background: transparent;
@@ -1711,8 +1613,8 @@
       cursor: pointer;
 
       transition:
-        transform .25s ease,
-        background .25s ease;
+        background .25s ease,
+        transform .25s ease;
     }
 
     .dots button::before {
@@ -1720,8 +1622,8 @@
 
       position: absolute;
 
-      top: 50%;
       left: 50%;
+      top: 50%;
 
       width: 32px;
       height: 32px;
@@ -1730,23 +1632,30 @@
     }
 
     .dots button.active {
-      background: var(--gold);
-
+      background: var(--gold-light);
       transform: scale(1.5);
     }
+
+
+    /* =====================================================
+       PROGRESS
+    ===================================================== */
 
     #progress {
       position: fixed;
 
-      top: 0;
       left: 0;
+      top: 0;
+
+      z-index: 900;
 
       width: 0;
       height: 2px;
 
-      z-index: 900;
+      background: var(--gold-light);
 
-      background: var(--gold);
+      box-shadow:
+        0 0 8px rgba(212, 175, 55, .35);
     }
 
 
@@ -1754,14 +1663,11 @@
        MOBILE
     ===================================================== */
 
-    @media (max-width: 720px) {
+    @media screen and (max-width: 720px) {
 
-      /*
-        MOBILE COVER FIX
-        -----------------------------------------------
-        Use a true viewport-centered group.
-        The envelope and text are sized as a single unit.
-      */
+      /* -----------------------------------------------
+         COVER
+      ----------------------------------------------- */
 
       #cover {
         padding:
@@ -1774,10 +1680,6 @@
       .cover-content {
         width: min(340px, 86vw);
 
-        /*
-          This prevents the group from drifting upward/downward
-          on phones with different browser UI heights.
-        */
         margin: 0 auto;
 
         transform: translateY(-1vh);
@@ -1794,14 +1696,11 @@
         margin-bottom: 17px;
 
         font-size: clamp(37px, 10.5vw, 52px);
-
         line-height: 1.05;
       }
 
       .env-wrap {
         width: min(320px, 80vw);
-
-        aspect-ratio: 1.55;
       }
 
       .seal {
@@ -1819,7 +1718,9 @@
       }
 
 
-      /* Floral corners */
+      /* -----------------------------------------------
+         FLORALS
+      ----------------------------------------------- */
 
       .floral-edge {
         width: 145px;
@@ -1844,8 +1745,8 @@
       }
 
       .floral-br {
-        bottom: -18px;
         right: -18px;
+        bottom: -18px;
       }
 
       .floral-stem {
@@ -1859,36 +1760,39 @@
       .floral-stem::before {
         width: 2px;
         height: 75px;
+
+        left: 8px;
+        top: 35px;
       }
 
       .floral-twig {
-        height: 2px;
         width: 46px;
       }
 
       .twig-1 {
-        left: 25px;
-        top: 35px;
+        left: 17px;
+        top: 34px;
       }
 
       .twig-2 {
-        left: 32px;
-        top: 58px;
+        left: 18px;
+        top: 55px;
       }
 
       .twig-3 {
-        left: 18px;
-        top: 82px;
+        left: 17px;
+        top: 78px;
       }
 
       .twig-4 {
-        left: 42px;
-        top: 105px;
+        left: 18px;
+        top: 101px;
       }
 
       .twig-5 {
-        left: 12px;
-        top: 128px;
+        left: 19px;
+        top: 124px;
+
         width: 38px;
       }
 
@@ -1898,48 +1802,48 @@
       }
 
       .leaf-1 {
-        left: 32px;
-        top: 18px;
+        left: 37px;
+        top: 28px;
       }
 
       .leaf-2 {
-        left: 7px;
-        top: 34px;
+        left: 46px;
+        top: 43px;
       }
 
       .leaf-3 {
-        left: 40px;
-        top: 46px;
+        left: 35px;
+        top: 56px;
       }
 
       .leaf-4 {
-        left: 13px;
-        top: 62px;
+        left: 47px;
+        top: 72px;
       }
 
       .leaf-5 {
-        left: 49px;
-        top: 75px;
+        left: 36px;
+        top: 85px;
       }
 
       .leaf-6 {
-        left: 16px;
-        top: 91px;
+        left: 48px;
+        top: 100px;
       }
 
       .leaf-7 {
-        left: 54px;
-        top: 103px;
+        left: 37px;
+        top: 113px;
       }
 
       .leaf-8 {
-        left: 22px;
-        top: 118px;
+        left: 48px;
+        top: 126px;
       }
 
       .leaf-9 {
-        left: 59px;
-        top: 127px;
+        left: 38px;
+        top: 137px;
       }
 
       .floral-flower {
@@ -1948,38 +1852,38 @@
       }
 
       .flower-a {
-        left: 46px;
-        top: 0;
+        left: 60px;
+        top: 19px;
       }
 
       .flower-b {
-        left: 0;
-        top: 31px;
+        left: 72px;
+        top: 45px;
       }
 
       .flower-c {
-        left: 50px;
-        top: 50px;
+        left: 55px;
+        top: 70px;
       }
 
       .flower-d {
-        left: 2px;
-        top: 77px;
+        left: 78px;
+        top: 90px;
       }
 
       .flower-e {
-        left: 55px;
-        top: 95px;
+        left: 60px;
+        top: 113px;
       }
 
       .flower-f {
-        left: 15px;
-        top: 118px;
+        left: 94px;
+        top: 29px;
       }
 
       .flower-g {
-        left: 77px;
-        top: 24px;
+        left: 94px;
+        top: 69px;
       }
 
       .floral-flower i {
@@ -1987,37 +1891,30 @@
         height: 22px;
 
         margin:
-          -11px 0 0 -7.5px;
+          -11px
+          0
+          0
+          -7.5px;
       }
 
       .floral-flower i:nth-child(1) {
-        transform:
-          rotate(0deg)
-          translateY(-8px);
+        transform: rotate(0deg) translateY(-8px);
       }
 
       .floral-flower i:nth-child(2) {
-        transform:
-          rotate(72deg)
-          translateY(-8px);
+        transform: rotate(72deg) translateY(-8px);
       }
 
       .floral-flower i:nth-child(3) {
-        transform:
-          rotate(144deg)
-          translateY(-8px);
+        transform: rotate(144deg) translateY(-8px);
       }
 
       .floral-flower i:nth-child(4) {
-        transform:
-          rotate(216deg)
-          translateY(-8px);
+        transform: rotate(216deg) translateY(-8px);
       }
 
       .floral-flower i:nth-child(5) {
-        transform:
-          rotate(288deg)
-          translateY(-8px);
+        transform: rotate(288deg) translateY(-8px);
       }
 
       .floral-flower b {
@@ -2031,24 +1928,252 @@
       }
 
 
-      /* Countdown */
+      /* -----------------------------------------------
+         HERO
+      ----------------------------------------------- */
+
+      #hero {
+        width: 100vw;
+        max-width: 100vw;
+        min-width: 0;
+
+        margin: 0;
+        padding: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+
+        overflow: hidden;
+      }
+
+      .hero-inner {
+        position: relative;
+
+        width: 100%;
+        max-width: 390px;
+        min-width: 0;
+
+        margin: 0 auto;
+
+        padding:
+          60px
+          20px
+          50px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+      }
+
+      .hero-inner > * {
+        margin-left: auto;
+        margin-right: auto;
+
+        text-align: center;
+
+        box-sizing: border-box;
+      }
+
+      .bismillah,
+      .together,
+      .monogram,
+      .hero-names,
+      .request-line,
+      .hero-daymonth,
+      .hero-venue-line,
+      .hashtag {
+        width: 100%;
+        max-width: 350px;
+
+        text-align: center;
+      }
+
+      .bismillah {
+        padding: 0 4px;
+      }
+
+      .together {
+        padding: 0 4px;
+      }
+
+      .hero-names {
+        padding: 0;
+
+        white-space: normal;
+        overflow-wrap: normal;
+        word-break: normal;
+      }
+
+      .request-line {
+        padding: 0 4px;
+      }
+
+      .hero-date {
+        width: 100%;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        text-align: center;
+      }
+
+      .divider {
+        width: 100px;
+
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .scrollcue {
+        left: 50%;
+        right: auto;
+
+        transform: translateX(-50%);
+
+        text-align: center;
+      }
+
+
+      /* -----------------------------------------------
+         COUNTDOWN
+      ----------------------------------------------- */
+
+      #countdown {
+        width: 100vw;
+        max-width: 100vw;
+        min-width: 0;
+
+        margin: 0;
+        padding: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+
+        overflow: hidden;
+      }
+
+      .cd-wrap {
+        width: 100%;
+        max-width: 390px;
+        min-width: 0;
+
+        margin: 0 auto;
+
+        padding:
+          60px
+          16px
+          50px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        text-align: center;
+      }
+
+      .cd-script,
+      .cd-until {
+        width: 100%;
+        max-width: 350px;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        text-align: center;
+      }
 
       .cd-grid {
+        width: 100%;
+        max-width: 320px;
+
+        margin:
+          38px
+          auto
+          0;
+
+        padding: 0;
+
+        display: grid;
+
         grid-template-columns: 1fr 1fr;
 
         gap: 22px 0;
+
+        justify-items: center;
+        align-items: center;
+      }
+
+      .cd-cell {
+        width: 100%;
+        max-width: 150px;
+
+        margin: 0 auto;
+
+        padding: 8px 4px;
+
+        text-align: center;
+      }
+
+      .cd-num,
+      .cd-label {
+        width: 100%;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        text-align: center;
       }
 
       .cd-divider {
         display: none;
       }
 
-      .cd-cell {
-        padding: 8px;
+
+      /* -----------------------------------------------
+         CELEBRATION
+      ----------------------------------------------- */
+
+      .celebration-wrap {
+        width: 100%;
+        max-width: 390px;
+
+        padding:
+          60px
+          20px
+          50px;
+      }
+
+      .cel-details {
+        gap: 24px 40px;
+      }
+
+      .cel-detail {
+        min-width: 120px;
       }
 
 
-      /* RSVP */
+      /* -----------------------------------------------
+         RSVP
+      ----------------------------------------------- */
+
+      .rsvp-wrap {
+        width: 100%;
+        max-width: 390px;
+
+        padding:
+          60px
+          20px
+          50px;
+      }
 
       .rsvp-buttons {
         flex-direction: column;
@@ -2060,7 +2185,24 @@
       }
 
 
-      /* Navigation */
+      /* -----------------------------------------------
+         CLOSING
+      ----------------------------------------------- */
+
+      .close-wrap {
+        width: 100%;
+        max-width: 390px;
+
+        padding:
+          60px
+          20px
+          50px;
+      }
+
+
+      /* -----------------------------------------------
+         NAVIGATION
+      ----------------------------------------------- */
 
       .dots {
         right: calc(10px + var(--safe-r));
@@ -2077,10 +2219,11 @@
        VERY SMALL PHONES
     ===================================================== */
 
-    @media (max-width: 380px) {
+    @media screen and (max-width: 380px) {
 
       .cover-content {
         width: 88vw;
+
         transform: translateY(-.5vh);
       }
 
@@ -2090,7 +2233,6 @@
 
       .env-names {
         margin-bottom: 13px;
-
         font-size: 35px;
       }
 
@@ -2107,13 +2249,48 @@
         margin-top: 13px;
       }
 
-      .hero-inner,
-      .cd-wrap,
+      .hero-inner {
+        width: 100%;
+        max-width: 100%;
+
+        padding:
+          55px
+          14px
+          45px;
+      }
+
+      .hero-names {
+        font-size: clamp(34px, 10.5vw, 48px);
+      }
+
+      .bismillah {
+        font-size: 13px;
+      }
+
+      .cd-wrap {
+        width: 100%;
+        max-width: 100%;
+
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .cd-grid {
+        max-width: 300px;
+      }
+
+      .cd-cell {
+        max-width: 140px;
+      }
+
       .celebration-wrap,
       .rsvp-wrap,
       .close-wrap {
-        padding-left: 10px;
-        padding-right: 10px;
+        width: 100%;
+        max-width: 100%;
+
+        padding-left: 14px;
+        padding-right: 14px;
       }
 
       .cel-details {
@@ -2130,7 +2307,7 @@
        SHORT MOBILE VIEWPORTS
     ===================================================== */
 
-    @media (max-height: 600px) and (max-width: 720px) {
+    @media screen and (max-height: 600px) and (max-width: 720px) {
 
       #cover {
         padding-top:
@@ -2175,7 +2352,13 @@
       }
 
       .divider {
-        margin: 14px auto;
+        margin-top: 14px;
+        margin-bottom: 14px;
+      }
+
+      .cd-wrap {
+        padding-top: 50px;
+        padding-bottom: 40px;
       }
     }
 
@@ -2199,411 +2382,7 @@
       }
     }
 
-  
-    /* =====================================================
-       MOBILE COUNTDOWN CENTERING FIX
-       Keeps the second section perfectly centered on phones.
-    ===================================================== */
-    @media (max-width: 720px) {
-      #countdown {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        overflow-x: hidden;
-      }
-
-      .cd-wrap {
-        width: 100%;
-        max-width: 360px;
-        margin: 0 auto;
-        padding-left: 16px;
-        padding-right: 16px;
-        box-sizing: border-box;
-        text-align: center;
-      }
-
-      .cd-grid {
-        width: 100%;
-        max-width: 320px;
-        margin-left: auto;
-        margin-right: auto;
-        grid-template-columns: 1fr 1fr;
-        gap: 22px 0;
-        justify-items: center;
-      }
-
-      .cd-cell {
-        width: 100%;
-        padding: 8px 4px;
-        text-align: center;
-        box-sizing: border-box;
-      }
-
-      .cd-num,
-      .cd-label {
-        width: 100%;
-        text-align: center;
-      }
-
-      .cd-divider {
-        display: none;
-      }
-    }
-
-
-    /* =====================================================
-       FINAL MOBILE HERO CENTERING FIX
-    ===================================================== */
-    @media screen and (max-width: 720px) {
-      #hero {
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 0 !important;
-        margin: 0 !important;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        text-align: center !important;
-        overflow: hidden !important;
-        box-sizing: border-box !important;
-      }
-
-      #hero .hero-inner {
-        width: 100% !important;
-        max-width: 390px !important;
-        min-width: 0 !important;
-        margin: 0 auto !important;
-        padding-left: 20px !important;
-        padding-right: 20px !important;
-        box-sizing: border-box !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-        text-align: center !important;
-      }
-
-      #hero .hero-inner > * {
-        margin-left: auto !important;
-        margin-right: auto !important;
-        text-align: center !important;
-        box-sizing: border-box !important;
-      }
-
-      #hero .bismillah,
-      #hero .together,
-      #hero .monogram,
-      #hero .hero-names,
-      #hero .request-line,
-      #hero .hero-daymonth,
-      #hero .hero-venue-line,
-      #hero .hashtag {
-        width: 100% !important;
-        max-width: 100% !important;
-        text-align: center !important;
-      }
-
-      #hero .bismillah {
-        padding: 0 4px !important;
-      }
-
-      #hero .together {
-        padding: 0 4px !important;
-      }
-
-      #hero .hero-names {
-        padding: 0 !important;
-        overflow-wrap: normal !important;
-        word-break: normal !important;
-      }
-
-      #hero .request-line {
-        padding: 0 4px !important;
-      }
-
-      #hero .hero-date {
-        text-align: center !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-      }
-
-      #hero .divider {
-        margin-left: auto !important;
-        margin-right: auto !important;
-      }
-
-      #hero .scrollcue {
-        left: 50% !important;
-        right: auto !important;
-        transform: translateX(-50%) !important;
-        text-align: center !important;
-      }
-    }
-
-    @media screen and (max-width: 380px) {
-      #hero .hero-inner {
-        max-width: 100% !important;
-        padding-left: 16px !important;
-        padding-right: 16px !important;
-      }
-
-      #hero .bismillah {
-        font-size: 13px !important;
-      }
-
-      #hero .hero-names {
-        font-size: clamp(34px, 10.5vw, 48px) !important;
-      }
-    }
-
-    /* =========================================================
-   FINAL iPHONE / MOBILE HERO CENTERING FIX
-   ========================================================= */
-
-@media screen and (max-width: 720px) {
-
-  /* First page itself */
-  #hero {
-    width: 100vw !important;
-    max-width: 100vw !important;
-    min-width: 100vw !important;
-
-    margin: 0 !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-
-    text-align: center !important;
-
-    overflow: hidden !important;
-  }
-
-
-  /* Main content container */
-  #hero .hero-inner {
-    position: relative !important;
-
-    width: 100vw !important;
-    max-width: 100vw !important;
-    min-width: 0 !important;
-
-    margin: 0 !important;
-
-    padding-left: 20px !important;
-    padding-right: 20px !important;
-
-    box-sizing: border-box !important;
-
-    text-align: center !important;
-
-    left: 0 !important;
-    right: auto !important;
-  }
-
-
-  /* Center every direct hero element */
-  #hero .hero-inner > * {
-    margin-left: auto !important;
-    margin-right: auto !important;
-
-    text-align: center !important;
-
-    box-sizing: border-box !important;
-  }
-
-
-  /* Bismillah */
-  #hero .bismillah {
-    display: block !important;
-
-    width: 100% !important;
-    max-width: 350px !important;
-
-    margin-left: auto !important;
-    margin-right: auto !important;
-
-    text-align: center !important;
-  }
-
-
-  /* Together with their families */
-  #hero .together {
-    display: block !important;
-
-    width: 100% !important;
-    max-width: 350px !important;
-
-    margin-left: auto !important;
-    margin-right: auto !important;
-
-    text-align: center !important;
-  }
-
-
-  /* A & A */
-  #hero .monogram {
-    display: block !important;
-
-    width: 100% !important;
-    max-width: 350px !important;
-
-    margin-left: auto !important;
-    margin-right: auto !important;
-
-    text-align: center !important;
-  }
-
-
-  /* Arham & Abeera */
-  #hero .hero-names {
-    display: block !important;
-
-    width: 100% !important;
-    max-width: 100% !important;
-
-    margin-left: auto !important;
-    margin-right: auto !important;
-
-    text-align: center !important;
-
-    white-space: normal !important;
-  }
-
-
-  /* Gold divider */
-  #hero .divider {
-    display: block !important;
-
-    width: 100px !important;
-
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-
-
-  /* Wedding invitation text */
-  #hero .request-line {
-    display: block !important;
-
-    width: 100% !important;
-    max-width: 350px !important;
-
-    margin-left: auto !important;
-    margin-right: auto !important;
-
-    text-align: center !important;
-  }
-
-
-  /* Date */
-  #hero .hero-date {
-    display: block !important;
-
-    width: 100% !important;
-    max-width: 350px !important;
-
-    margin-left: auto !important;
-    margin-right: auto !important;
-
-    text-align: center !important;
-  }
-
-
-  /* Friday · November · 2026 */
-  #hero .hero-daymonth {
-    display: block !important;
-
-    width: 100% !important;
-    max-width: 350px !important;
-
-    margin-left: auto !important;
-    margin-right: auto !important;
-
-    text-align: center !important;
-  }
-
-
-  /* Venue */
-  #hero .hero-venue-line {
-    display: block !important;
-
-    width: 100% !important;
-    max-width: 350px !important;
-
-    margin-left: auto !important;
-    margin-right: auto !important;
-
-    text-align: center !important;
-  }
-
-
-  /* Hashtag */
-  #hero .hashtag {
-    display: block !important;
-
-    width: 100% !important;
-    max-width: 350px !important;
-
-    margin-left: auto !important;
-    margin-right: auto !important;
-
-    text-align: center !important;
-  }
-
-
-  /* Scroll indicator */
-  #hero .scrollcue {
-    left: 50% !important;
-    right: auto !important;
-
-    transform: translateX(-50%) !important;
-
-    text-align: center !important;
-  }
-
-}
-
-
-/* =========================================================
-   EXTRA SMALL PHONES
-   ========================================================= */
-
-@media screen and (max-width: 380px) {
-
-  #hero .hero-inner {
-    width: 100vw !important;
-    max-width: 100vw !important;
-
-    padding-left: 14px !important;
-    padding-right: 14px !important;
-
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-
-    text-align: center !important;
-  }
-
-  #hero .bismillah {
-    max-width: 340px !important;
-  }
-
-  #hero .together {
-    max-width: 340px !important;
-  }
-
-  #hero .request-line {
-    max-width: 340px !important;
-  }
-}
-
-</style>
+  </style>
 </head>
 
 
@@ -2617,11 +2396,6 @@
   ===================================================== -->
 
   <div id="cover">
-
-    <!--
-      This wrapper is the important mobile centering fix.
-      Everything on the first screen is treated as one group.
-    -->
 
     <div class="cover-content">
 
@@ -2781,57 +2555,29 @@
         <div class="cd-grid">
 
           <div class="cd-cell cd-item">
-
-            <div class="cd-num" id="dd">
-              00
-            </div>
-
-            <div class="cd-label">
-              DAYS
-            </div>
-
+            <div class="cd-num" id="dd">00</div>
+            <div class="cd-label">DAYS</div>
           </div>
 
           <div class="cd-divider"></div>
 
           <div class="cd-cell cd-item">
-
-            <div class="cd-num" id="hh">
-              00
-            </div>
-
-            <div class="cd-label">
-              HOURS
-            </div>
-
+            <div class="cd-num" id="hh">00</div>
+            <div class="cd-label">HOURS</div>
           </div>
 
           <div class="cd-divider"></div>
 
           <div class="cd-cell cd-item">
-
-            <div class="cd-num" id="mm">
-              00
-            </div>
-
-            <div class="cd-label">
-              MINUTES
-            </div>
-
+            <div class="cd-num" id="mm">00</div>
+            <div class="cd-label">MINUTES</div>
           </div>
 
           <div class="cd-divider"></div>
 
           <div class="cd-cell cd-item">
-
-            <div class="cd-num" id="ss">
-              00
-            </div>
-
-            <div class="cd-label">
-              SECONDS
-            </div>
-
+            <div class="cd-num" id="ss">00</div>
+            <div class="cd-label">SECONDS</div>
           </div>
 
         </div>
@@ -2864,7 +2610,6 @@
         <div class="cel-details">
 
           <div class="cel-detail cel-item">
-
             <span>DATE</span>
 
             <strong>
@@ -2874,11 +2619,9 @@
             <small>
               Friday
             </small>
-
           </div>
 
           <div class="cel-detail cel-item">
-
             <span>TIME</span>
 
             <strong>
@@ -2888,7 +2631,6 @@
             <small>
               In the evening
             </small>
-
           </div>
 
         </div>
@@ -2897,16 +2639,15 @@
 
         <div class="venue-art cel-item">
 
-          <svg
-            viewBox="0 0 180 130"
-            fill="none"
-          >
+          <svg viewBox="0 0 180 130" fill="none">
 
             <path d="M20 125V72L90 35L160 72V125" />
 
             <path d="M43 125V80L90 55L137 80V125" />
 
-            <path d="M72 125V99C72 90 79 84 90 84C101 84 108 90 108 99V125" />
+            <path
+              d="M72 125V99C72 90 79 84 90 84C101 84 108 90 108 99V125"
+            />
 
             <line
               x1="10"
@@ -3054,8 +2795,7 @@
 
           ["tl", "tr", "bl", "br"].forEach(position => {
 
-            const edge =
-              document.createElement("div");
+            const edge = document.createElement("div");
 
             edge.className =
               `floral-edge floral-${position}`;
@@ -3241,12 +2981,10 @@
 
       gsap.fromTo(
         ".hero-item",
-
         {
           opacity: 0,
           y: 35
         },
-
         {
           opacity: 1,
           y: 0,
@@ -3259,11 +2997,8 @@
 
           scrollTrigger: {
             trigger: "#hero",
-
             start: "top 80%",
-
             end: "top 30%",
-
             scrub: false
           }
         }
@@ -3271,18 +3006,14 @@
 
       gsap.to(
         ".hero-inner",
-
         {
           y: -80,
           opacity: .35,
 
           scrollTrigger: {
             trigger: "#hero",
-
             start: "top top",
-
             end: "bottom top",
-
             scrub: 1
           }
         }
@@ -3299,12 +3030,10 @@
 
       gsap.fromTo(
         ".cd-item",
-
         {
           opacity: 0,
           y: 35
         },
-
         {
           opacity: 1,
           y: 0,
@@ -3317,7 +3046,6 @@
 
           scrollTrigger: {
             trigger: "#countdown",
-
             start: "top 75%"
           }
         }
@@ -3334,12 +3062,10 @@
 
       gsap.fromTo(
         ".cel-item",
-
         {
           opacity: 0,
           y: 30
         },
-
         {
           opacity: 1,
           y: 0,
@@ -3352,7 +3078,6 @@
 
           scrollTrigger: {
             trigger: "#celebration",
-
             start: "top 75%"
           }
         }
@@ -3369,12 +3094,10 @@
 
       gsap.fromTo(
         ".rsvp-item",
-
         {
           opacity: 0,
           y: 30
         },
-
         {
           opacity: 1,
           y: 0,
@@ -3387,7 +3110,6 @@
 
           scrollTrigger: {
             trigger: "#rsvp",
-
             start: "top 75%"
           }
         }
@@ -3404,12 +3126,10 @@
 
       gsap.fromTo(
         ".close-item",
-
         {
           opacity: 0,
           y: 30
         },
-
         {
           opacity: 1,
           y: 0,
@@ -3422,7 +3142,6 @@
 
           scrollTrigger: {
             trigger: "#closing",
-
             start: "top 75%"
           }
         }
@@ -3523,24 +3242,16 @@
           1000
         );
 
-      document
-        .getElementById("dd")
-        .textContent =
+      document.getElementById("dd").textContent =
         String(days).padStart(2, "0");
 
-      document
-        .getElementById("hh")
-        .textContent =
+      document.getElementById("hh").textContent =
         String(hours).padStart(2, "0");
 
-      document
-        .getElementById("mm")
-        .textContent =
+      document.getElementById("mm").textContent =
         String(minutes).padStart(2, "0");
 
-      document
-        .getElementById("ss")
-        .textContent =
+      document.getElementById("ss").textContent =
         String(seconds).padStart(2, "0");
 
     }
@@ -3653,9 +3364,9 @@
           ? (scrollTop / maxScroll) * 100
           : 0;
 
-      document
-        .getElementById("progress")
-        .style.width =
+      document.getElementById(
+        "progress"
+      ).style.width =
         `${progress}%`;
 
     }
