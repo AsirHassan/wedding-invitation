@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#3a0716">
 
   <title>Arham & Abeera — Wedding Invitation</title>
 
@@ -48,6 +49,11 @@
 
       --petal-maroon:#8d2946;
       --petal-maroon-dark:#5c1028;
+
+      --safe-t: env(safe-area-inset-top, 0px);
+      --safe-r: env(safe-area-inset-right, 0px);
+      --safe-b: env(safe-area-inset-bottom, 0px);
+      --safe-l: env(safe-area-inset-left, 0px);
     }
 
 
@@ -59,15 +65,20 @@
       box-sizing:border-box;
       margin:0;
       padding:0;
+      -webkit-tap-highlight-color:transparent;
     }
 
     html{
       scroll-behavior:auto;
       background:var(--maroon-deep);
+      width:100%;
+      overflow-x:hidden;
     }
 
     body{
       margin:0;
+      width:100%;
+      max-width:100vw;
       background:
         radial-gradient(
           ellipse at 50% 15%,
@@ -78,15 +89,19 @@
       color:var(--cream);
       font-family:"Cormorant Garamond",serif;
       overflow-x:hidden;
+      -webkit-text-size-adjust:100%;
+      text-size-adjust:100%;
     }
 
     body.locked{
       overflow:hidden;
+      height:100dvh;
     }
 
     button,
     a{
       font:inherit;
+      touch-action:manipulation;
     }
 
     a{
@@ -97,13 +112,19 @@
     main{
       position:relative;
       width:100%;
+      max-width:100vw;
+      overflow-x:hidden;
     }
 
     main section{
       position:relative;
       width:100%;
+      max-width:100vw;
+      min-height:100vh;
       min-height:100dvh;
       overflow:hidden;
+      padding-left:var(--safe-l);
+      padding-right:var(--safe-r);
     }
 
     /*
@@ -156,6 +177,17 @@
       flex-direction:column;
       align-items:center;
       justify-content:center;
+      text-align:center;
+
+      width:100%;
+      height:100vh;
+      height:100dvh;
+
+      padding:
+        calc(24px + var(--safe-t))
+        calc(16px + var(--safe-r))
+        calc(24px + var(--safe-b))
+        calc(16px + var(--safe-l));
 
       background:
         radial-gradient(
@@ -190,22 +222,29 @@
       z-index:3;
       margin-bottom:20px;
 
+      width:100%;
+      text-align:center;
+
       color:var(--gold-light);
       font-family:"Jost",sans-serif;
-      font-size:10px;
+      font-size:clamp(9px,2.6vw,10px);
       font-weight:500;
-      letter-spacing:.38em;
+      letter-spacing:.32em;
       text-transform:uppercase;
     }
 
     .env-names{
       position:relative;
       z-index:3;
-      margin-bottom:28px;
+      margin-bottom:clamp(18px,5vw,28px);
+
+      width:100%;
+      max-width:94vw;
+      text-align:center;
 
       color:var(--cream);
-      font-size:64px;
-      line-height:1;
+      font-size:clamp(36px,11vw,64px);
+      line-height:1.15;
 
       text-shadow:
         0 2px 12px rgba(0,0,0,.25);
@@ -213,9 +252,11 @@
 
     .env-wrap{
       position:relative;
-      width:min(440px,78vw);
+      width:min(440px,80vw);
+      max-width:100%;
       aspect-ratio:1.55;
       perspective:1000px;
+      margin:0 auto;
     }
 
     .env-back{
@@ -296,8 +337,8 @@
 
       transform:translate(-50%,-50%);
 
-      width:70px;
-      height:70px;
+      width:clamp(52px,14vw,70px);
+      height:clamp(52px,14vw,70px);
 
       display:flex;
       align-items:center;
@@ -322,7 +363,7 @@
         inset 0 0 0 4px rgba(212,175,55,.1);
 
       font-family:"Cormorant Garamond",serif;
-      font-size:18px;
+      font-size:clamp(15px,3.6vw,18px);
       font-weight:600;
 
       z-index:5;
@@ -331,12 +372,15 @@
     .tap-hint{
       position:relative;
       z-index:3;
-      margin-top:30px;
+      margin-top:clamp(20px,5vw,30px);
+
+      width:100%;
+      text-align:center;
 
       color:var(--muted);
       font-family:"Jost",sans-serif;
-      font-size:9px;
-      letter-spacing:.35em;
+      font-size:clamp(8px,2.2vw,9px);
+      letter-spacing:.32em;
     }
 
 
@@ -862,56 +906,65 @@
     }
 
     .hero-inner{
-      width:min(760px,88vw);
+      width:min(760px,90vw);
 
       text-align:center;
 
       padding:
-        90px 20px 80px;
+        clamp(70px,14vw,90px) 12px clamp(56px,11vw,80px);
     }
 
     .bismillah{
-      margin-bottom:22px;
+      margin-bottom:clamp(10px,3vw,14px);
+
+      width:100%;
+      text-align:center;
 
       color:var(--gold-light);
+      font-family:"Cormorant Garamond",serif;
+      font-style:italic;
+      font-weight:400;
+      font-size:clamp(13px,3.6vw,15px);
+      line-height:1.55;
+      letter-spacing:.01em;
+    }
+
+    .together{
+      width:100%;
+      text-align:center;
+
+      color:var(--muted);
 
       font-family:"Jost",sans-serif;
-      font-size:10px;
-      font-weight:400;
+      font-size:clamp(8px,2.4vw,10px);
 
       letter-spacing:.22em;
       text-transform:uppercase;
     }
 
-    .together{
-      color:var(--muted);
-
-      font-family:"Jost",sans-serif;
-      font-size:10px;
-
-      letter-spacing:.25em;
-      text-transform:uppercase;
-    }
-
     .monogram{
-      margin-top:28px;
+      margin-top:clamp(20px,5vw,28px);
 
       color:var(--gold);
 
-      font-size:65px;
+      font-size:clamp(44px,11vw,65px);
       line-height:.9;
     }
 
     .hero-names{
-      margin-top:20px;
+      margin-top:clamp(14px,4vw,20px);
+
+      width:100%;
+      max-width:100%;
 
       color:var(--cream);
 
       font-size:
-        clamp(45px,8vw,76px);
+        clamp(38px,11vw,76px);
 
       font-weight:400;
-      line-height:.95;
+      line-height:1.05;
+      overflow-wrap:break-word;
     }
 
     .hero-names span{
@@ -923,7 +976,7 @@
       width:100px;
       height:1px;
 
-      margin:28px auto;
+      margin:clamp(20px,5vw,28px) auto;
 
       background:
         linear-gradient(
@@ -937,16 +990,16 @@
     .request-line{
       color:var(--cream-soft);
 
-      font-size:17px;
+      font-size:clamp(14px,3.6vw,17px);
       line-height:1.6;
     }
 
     .hero-date{
-      margin-top:25px;
+      margin-top:clamp(18px,5vw,25px);
 
       color:var(--gold-light);
 
-      font-size:74px;
+      font-size:clamp(48px,14vw,74px);
       font-weight:300;
       line-height:.85;
     }
@@ -954,42 +1007,51 @@
     .hero-daymonth{
       margin-top:9px;
 
+      width:100%;
+      text-align:center;
+
       color:var(--cream);
 
       font-family:"Jost",sans-serif;
-      font-size:10px;
+      font-size:clamp(8px,2.2vw,10px);
 
-      letter-spacing:.25em;
+      letter-spacing:.2em;
     }
 
     .hero-venue-line{
-      margin-top:25px;
+      margin-top:clamp(18px,5vw,25px);
+
+      width:100%;
+      text-align:center;
 
       color:var(--muted);
 
       font-family:"Jost",sans-serif;
-      font-size:10px;
+      font-size:clamp(8px,2.2vw,10px);
 
-      line-height:1.8;
-      letter-spacing:.12em;
+      line-height:1.9;
+      letter-spacing:.1em;
       text-transform:uppercase;
     }
 
     .hashtag{
-      margin-top:25px;
+      margin-top:clamp(18px,5vw,25px);
+
+      width:100%;
+      text-align:center;
 
       color:var(--gold);
 
       font-family:"Jost",sans-serif;
-      font-size:11px;
+      font-size:clamp(10px,2.6vw,11px);
 
-      letter-spacing:.25em;
+      letter-spacing:.22em;
     }
 
     .scrollcue{
       position:absolute;
 
-      bottom:22px;
+      bottom:calc(18px + var(--safe-b));
       left:50%;
 
       transform:translateX(-50%);
@@ -1037,18 +1099,18 @@
     }
 
     .cd-wrap{
-      width:min(900px,88vw);
+      width:min(900px,90vw);
 
       text-align:center;
 
-      padding:80px 20px;
+      padding:clamp(56px,12vw,80px) 12px;
     }
 
     .cd-script{
       color:var(--gold-light);
 
       font-size:
-        clamp(45px,7vw,72px);
+        clamp(40px,10vw,72px);
 
       line-height:1;
     }
@@ -1056,12 +1118,15 @@
     .cd-until{
       margin-top:15px;
 
+      width:100%;
+      text-align:center;
+
       color:var(--muted);
 
       font-family:"Jost",sans-serif;
-      font-size:9px;
+      font-size:clamp(8px,2.2vw,9px);
 
-      letter-spacing:.3em;
+      letter-spacing:.24em;
     }
 
     .cd-grid{
@@ -1072,18 +1137,18 @@
 
       align-items:center;
 
-      margin-top:55px;
+      margin-top:clamp(36px,9vw,55px);
     }
 
     .cd-cell{
-      padding:10px 20px;
+      padding:10px clamp(6px,2vw,20px);
     }
 
     .cd-num{
       color:var(--cream);
 
       font-size:
-        clamp(42px,7vw,70px);
+        clamp(34px,9vw,70px);
 
       font-weight:300;
       line-height:1;
@@ -1095,9 +1160,9 @@
       color:var(--muted);
 
       font-family:"Jost",sans-serif;
-      font-size:8px;
+      font-size:clamp(7px,1.8vw,8px);
 
-      letter-spacing:.25em;
+      letter-spacing:.22em;
     }
 
     .cd-divider{
@@ -1133,20 +1198,23 @@
     }
 
     .celebration-wrap{
-      width:min(650px,88vw);
+      width:min(650px,90vw);
 
       text-align:center;
 
-      padding:90px 20px 80px;
+      padding:clamp(60px,13vw,90px) 12px clamp(56px,11vw,80px);
     }
 
     .cel-kicker{
+      width:100%;
+      text-align:center;
+
       color:var(--gold-light);
 
       font-family:"Jost",sans-serif;
-      font-size:9px;
+      font-size:clamp(8px,2.2vw,9px);
 
-      letter-spacing:.32em;
+      letter-spacing:.3em;
       text-transform:uppercase;
     }
 
@@ -1156,7 +1224,7 @@
       color:var(--cream);
 
       font-size:
-        clamp(36px,6vw,58px);
+        clamp(30px,9vw,58px);
 
       font-weight:400;
     }
@@ -1167,21 +1235,22 @@
       color:var(--gold);
 
       font-size:
-        clamp(42px,7vw,65px);
+        clamp(36px,9vw,65px);
     }
 
     .cel-details{
       display:flex;
+      flex-wrap:wrap;
 
       justify-content:center;
 
-      gap:70px;
+      gap:clamp(28px,7vw,70px);
 
-      margin-top:38px;
+      margin-top:clamp(28px,7vw,38px);
     }
 
     .cel-detail{
-      min-width:150px;
+      min-width:110px;
     }
 
     .cel-detail span{
@@ -1192,7 +1261,7 @@
       font-family:"Jost",sans-serif;
       font-size:8px;
 
-      letter-spacing:.25em;
+      letter-spacing:.22em;
     }
 
     .cel-detail strong{
@@ -1202,7 +1271,7 @@
 
       color:var(--cream);
 
-      font-size:20px;
+      font-size:clamp(16px,4vw,20px);
       font-weight:400;
     }
 
@@ -1221,7 +1290,7 @@
       width:80px;
       height:1px;
 
-      margin:32px auto;
+      margin:clamp(24px,6vw,32px) auto;
 
       background:
         linear-gradient(
@@ -1233,7 +1302,7 @@
     }
 
     .venue-art{
-      width:130px;
+      width:clamp(96px,26vw,130px);
 
       margin:
         0 auto 15px;
@@ -1251,19 +1320,22 @@
     .venue-heading{
       color:var(--cream);
 
-      font-size:31px;
+      font-size:clamp(24px,6.5vw,31px);
     }
 
     .venue-address{
       margin-top:5px;
 
+      width:100%;
+      text-align:center;
+
       color:var(--muted);
 
       font-family:"Jost",sans-serif;
-      font-size:10px;
+      font-size:clamp(9px,2.4vw,10px);
 
       line-height:1.8;
-      letter-spacing:.12em;
+      letter-spacing:.1em;
       text-transform:uppercase;
     }
 
@@ -1272,7 +1344,7 @@
 
       margin-top:22px;
 
-      padding:10px 20px;
+      padding:12px 22px;
 
       border:
         1px solid rgba(212,175,55,.55);
@@ -1280,18 +1352,25 @@
       color:var(--gold-light);
 
       font-family:"Jost",sans-serif;
-      font-size:8px;
+      font-size:9px;
+      font-weight:500;
 
-      letter-spacing:.2em;
+      letter-spacing:.18em;
 
       transition:
         background .25s ease,
-        color .25s ease;
+        color .25s ease,
+        transform .2s ease;
     }
 
-    .maps-link:hover{
+    .maps-link:hover,
+    .maps-link:active{
       background:var(--gold);
       color:var(--maroon);
+    }
+
+    .maps-link:active{
+      transform:scale(.97);
     }
 
 
@@ -1314,18 +1393,18 @@
     }
 
     .rsvp-wrap{
-      width:min(650px,88vw);
+      width:min(650px,90vw);
 
       text-align:center;
 
-      padding:90px 20px;
+      padding:clamp(60px,13vw,90px) 12px;
     }
 
     .rsvp-script{
       color:var(--gold-light);
 
       font-size:
-        clamp(46px,7vw,70px);
+        clamp(40px,10vw,70px);
 
       line-height:1;
     }
@@ -1333,19 +1412,22 @@
     .rsvp-title{
       margin-top:18px;
 
+      width:100%;
+      text-align:center;
+
       color:var(--cream);
 
-      font-size:23px;
+      font-size:clamp(18px,4.6vw,23px);
     }
 
     .rsvp-text{
-      max-width:470px;
+      max-width:min(470px,92vw);
 
       margin:18px auto 0;
 
       color:var(--muted);
 
-      font-size:16px;
+      font-size:clamp(14px,3.6vw,16px);
       line-height:1.65;
     }
 
@@ -1368,23 +1450,24 @@
       justify-content:center;
 
       min-width:205px;
+      min-height:46px;
 
-      padding:13px 20px;
+      padding:14px 20px;
 
       background:var(--gold);
       color:var(--maroon);
 
       font-family:"Jost",sans-serif;
-      font-size:8px;
+      font-size:9px;
       font-weight:600;
 
-      letter-spacing:.17em;
+      letter-spacing:.15em;
 
       border:
         1px solid var(--gold);
 
       transition:
-        transform .25s ease,
+        transform .2s ease,
         background .25s ease,
         color .25s ease;
     }
@@ -1395,12 +1478,17 @@
       background:var(--gold-light);
     }
 
+    .rsvp-btn:active{
+      transform:translateY(0) scale(.97);
+    }
+
     .rsvp-btn.secondary{
       background:transparent;
       color:var(--gold-light);
     }
 
-    .rsvp-btn.secondary:hover{
+    .rsvp-btn.secondary:hover,
+    .rsvp-btn.secondary:active{
       background:var(--gold);
       color:var(--maroon);
     }
@@ -1425,18 +1513,18 @@
     }
 
     .close-wrap{
-      width:min(600px,88vw);
+      width:min(600px,90vw);
 
       text-align:center;
 
-      padding:90px 20px;
+      padding:clamp(60px,13vw,90px) 12px calc(clamp(60px,13vw,90px) + var(--safe-b));
     }
 
     .close-script{
       color:var(--gold-light);
 
       font-size:
-        clamp(48px,8vw,75px);
+        clamp(42px,11vw,75px);
 
       line-height:1;
     }
@@ -1447,7 +1535,7 @@
       color:var(--cream);
 
       font-size:
-        clamp(32px,5vw,48px);
+        clamp(28px,7vw,48px);
 
       font-weight:400;
     }
@@ -1455,23 +1543,29 @@
     .close-hashtag{
       margin-top:25px;
 
+      width:100%;
+      text-align:center;
+
       color:var(--gold);
 
       font-family:"Jost",sans-serif;
-      font-size:11px;
+      font-size:clamp(10px,2.6vw,11px);
 
-      letter-spacing:.28em;
+      letter-spacing:.25em;
     }
 
     .close-sub{
       margin-top:12px;
 
+      width:100%;
+      text-align:center;
+
       color:var(--muted);
 
       font-family:"Jost",sans-serif;
-      font-size:9px;
+      font-size:clamp(8px,2.2vw,9px);
 
-      letter-spacing:.2em;
+      letter-spacing:.18em;
     }
 
 
@@ -1482,7 +1576,7 @@
     .dots{
       position:fixed;
 
-      right:22px;
+      right:calc(22px + var(--safe-r));
       top:50%;
 
       transform:translateY(-50%);
@@ -1496,6 +1590,8 @@
     }
 
     .dots button{
+      position:relative;
+
       width:7px;
       height:7px;
 
@@ -1513,6 +1609,20 @@
       transition:
         transform .25s ease,
         background .25s ease;
+    }
+
+    /* enlarge the tap target without changing the visual dot */
+    .dots button::before{
+      content:"";
+
+      position:absolute;
+      top:50%;
+      left:50%;
+
+      width:32px;
+      height:32px;
+
+      transform:translate(-50%,-50%);
     }
 
     .dots button.active{
@@ -1542,26 +1652,8 @@
 
     @media(max-width:720px){
 
-      .env-names{
-        font-size:50px;
-      }
-
       .env-wrap{
         width:82vw;
-      }
-
-      .seal{
-        width:58px;
-        height:58px;
-        font-size:15px;
-      }
-
-      .cover-top{
-        font-size:8px;
-      }
-
-      .tap-hint{
-        font-size:8px;
       }
 
       /* Smaller floral corners */
@@ -1771,44 +1863,9 @@
 
       /* Mobile content */
 
-      .hero-inner{
-        padding:80px 18px 65px;
-      }
-
-      .bismillah{
-        font-size:8px;
-        letter-spacing:.16em;
-      }
-
-      .together{
-        font-size:8px;
-        letter-spacing:.18em;
-      }
-
-      .monogram{
-        font-size:52px;
-      }
-
-      .hero-date{
-        font-size:62px;
-      }
-
-      .hero-daymonth{
-        font-size:8px;
-        letter-spacing:.16em;
-      }
-
-      .hero-venue-line{
-        font-size:8px;
-      }
-
-      .cd-wrap{
-        padding:80px 12px;
-      }
-
       .cd-grid{
         grid-template-columns:1fr 1fr;
-        gap:25px 0;
+        gap:22px 0;
       }
 
       .cd-divider{
@@ -1819,58 +1876,73 @@
         padding:8px;
       }
 
-      .cd-num{
-        font-size:46px;
-      }
-
-      .celebration-wrap{
-        padding:75px 18px;
-      }
-
-      .cel-details{
-        gap:30px;
-      }
-
-      .cel-detail{
-        min-width:120px;
-      }
-
-      .cel-detail strong{
-        font-size:17px;
-      }
-
-      .venue-heading{
-        font-size:27px;
-      }
-
-      .rsvp-wrap{
-        padding:75px 18px;
-      }
-
-      .rsvp-title{
-        font-size:20px;
-      }
-
-      .rsvp-text{
-        font-size:15px;
-      }
-
       .rsvp-buttons{
         flex-direction:column;
         align-items:center;
       }
 
       .rsvp-btn{
-        width:min(290px,85vw);
+        width:min(290px,88vw);
       }
 
       .dots{
-        right:10px;
+        right:calc(10px + var(--safe-r));
       }
 
       .dots button{
         width:6px;
         height:6px;
+      }
+    }
+
+    /* Extra-small phones (SE, mini, budget Android) */
+    @media(max-width:380px){
+
+      .env-wrap{
+        width:86vw;
+      }
+
+      .seal{
+        width:48px;
+        height:48px;
+      }
+
+      .hero-inner,
+      .cd-wrap,
+      .celebration-wrap,
+      .rsvp-wrap,
+      .close-wrap{
+        padding-left:10px;
+        padding-right:10px;
+      }
+
+      .cel-details{
+        gap:20px 32px;
+      }
+
+      .cel-detail{
+        min-width:100px;
+      }
+    }
+
+    /* Short viewports (landscape phones, small screens) */
+    @media(max-height:600px) and (max-width:720px){
+
+      .hero-inner{
+        padding-top:56px;
+        padding-bottom:40px;
+      }
+
+      .monogram{
+        margin-top:14px;
+      }
+
+      .hero-names{
+        margin-top:10px;
+      }
+
+      .divider{
+        margin:14px auto;
       }
     }
 
@@ -2930,17 +3002,45 @@
 
 
     /* =====================================================
-       RESIZE
+       RESIZE / ORIENTATION
+       Debounced so mobile address-bar show/hide doesn't
+       spam layout recalculations.
     ====================================================== */
+
+    let resizeTimer;
+
+    function handleViewportChange(){
+
+      clearTimeout(resizeTimer);
+
+      resizeTimer = setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 150);
+
+    }
 
     window.addEventListener(
       "resize",
-      () => {
-
-        ScrollTrigger.refresh();
-
-      }
+      handleViewportChange
     );
+
+    window.addEventListener(
+      "orientationchange",
+      handleViewportChange
+    );
+
+    /*
+      Fonts loading late can change text height (and
+      therefore section height) after ScrollTrigger has
+      already measured the page — refresh once they're in.
+    */
+    if(document.fonts && document.fonts.ready){
+
+      document.fonts.ready.then(() => {
+        ScrollTrigger.refresh();
+      });
+
+    }
 
 
     /* =====================================================
@@ -2956,4 +3056,4 @@
 
   </script>
 
-</body>
+</body></html>
