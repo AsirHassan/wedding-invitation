@@ -450,13 +450,12 @@ main section>*:not(.floral-edge):not(.pattern){
 
 .bismillah{
   margin-bottom:17px;
+  padding:0 8px;
   color:var(--gold-light);
   font-family:"Jost",sans-serif;
   font-size:11px;
   letter-spacing:.14em;
   line-height:1.7;
-  /* FIX: belt-and-suspenders centering + wrapping so this line (the longest
-     in the hero) never overflows its column or hugs the left edge */
   text-align:center;
   text-wrap:balance;
   overflow-wrap:break-word;
@@ -1127,23 +1126,55 @@ main section>*:not(.floral-edge):not(.pattern){
     min-width:0;
   }
 
-  .hero-inner{
-    width:min(100%,390px);
-    max-width:390px;
-    padding:60px 20px 50px;
-    margin:auto;
+  #hero{
     display:flex;
     flex-direction:column;
-    align-items:center;
+    align-items:stretch;
+    justify-content:center;
+  }
+
+  /* Keep corner florals from covering the opening line */
+  #hero .floral-tl,
+  #hero .floral-tr{
+    width:108px;
+    height:108px;
+    top:-36px;
+  }
+
+  #hero .floral-tl{left:-42px}
+  #hero .floral-tr{right:-42px}
+
+  .hero-inner{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    align-self:stretch;
+    padding:84px 48px 56px;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    box-sizing:border-box;
   }
 
   .hero-inner>*{
-    margin-left:auto;
-    margin-right:auto;
+    width:100%;
+    max-width:100%;
+    margin-left:0;
+    margin-right:0;
     text-align:center;
   }
 
-  .bismillah,
+  .bismillah{
+    max-width:100%;
+    padding:0;
+    font-size:12px;
+    letter-spacing:.08em;
+    line-height:1.55;
+    position:relative;
+    z-index:6;
+  }
+
   .together,
   .monogram,
   .hero-names,
@@ -1152,7 +1183,7 @@ main section>*:not(.floral-edge):not(.pattern){
   .hero-venue-line,
   .hashtag{
     width:100%;
-    max-width:350px;
+    max-width:100%;
   }
 
   .hero-names{
@@ -1287,16 +1318,17 @@ main section>*:not(.floral-edge):not(.pattern){
   .hero-inner{
     width:100%;
     max-width:100%;
-    /* FIX: top padding raised from 55px to 78px so the bismillah line
-       clears the corner florals on the narrowest phones */
-    padding:78px 14px 45px;
+    padding:80px 36px 48px;
   }
 
   .hero-names{
     font-size:clamp(34px,10.5vw,48px);
   }
 
-  .bismillah{font-size:13px}
+  .bismillah{
+    font-size:11.5px;
+    letter-spacing:.06em;
+  }
 
   /* FIX: shrink the corner florals a bit further still on very small
      screens, where the same artwork covers proportionally more area */
@@ -1355,8 +1387,10 @@ main section>*:not(.floral-edge):not(.pattern){
   .tap-hint{margin-top:10px}
 
   .hero-inner{
-    padding-top:56px;
+    padding-top:72px;
     padding-bottom:40px;
+    padding-left:40px;
+    padding-right:40px;
   }
 
   .monogram{margin-top:14px}
@@ -1445,7 +1479,8 @@ main section>*:not(.floral-edge):not(.pattern){
 
   <div class="hero-inner">
     <div class="bismillah hero-item">
-      In the name of Allah, the Most Gracious, the Most Merciful
+      In the name of Allah,<br>
+      the Most Gracious, the Most Merciful
     </div>
 
     <div class="together hero-item">
