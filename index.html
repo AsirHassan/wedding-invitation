@@ -455,6 +455,12 @@ main section>*:not(.floral-edge):not(.pattern){
   font-size:11px;
   letter-spacing:.14em;
   line-height:1.7;
+  /* FIX: belt-and-suspenders centering + wrapping so this line (the longest
+     in the hero) never overflows its column or hugs the left edge */
+  text-align:center;
+  text-wrap:balance;
+  overflow-wrap:break-word;
+  text-shadow:0 1px 6px rgba(38,3,13,.55);
 }
 
 .together{
@@ -1002,30 +1008,41 @@ main section>*:not(.floral-edge):not(.pattern){
     letter-spacing:.28em;
   }
 
+  /* FIX: the corner florals were overlapping the "In the name of Allah..."
+     line at the top of the hero section on phones — that line is long,
+     runs almost the full width of the card, and sits close to the top,
+     right where the floral artwork reaches in from each corner. Shrinking
+     the ornament (via scale, not just its box) and pushing it further
+     into the corner gives that line real clearance. */
   .floral-edge{
     width:145px;
     height:145px;
-    opacity:.65;
+    opacity:.45;
   }
+
+  .floral-tl{transform:scale(.62)}
+  .floral-tr{transform:scaleX(-1) scale(.62)}
+  .floral-bl{transform:scaleY(-1) scale(.62)}
+  .floral-br{transform:scale(-.62)}
 
   .floral-tl,
   .floral-tr{
-    top:-18px;
+    top:-34px;
   }
 
   .floral-tl,
   .floral-bl{
-    left:-18px;
+    left:-34px;
   }
 
   .floral-tr,
   .floral-br{
-    right:-18px;
+    right:-34px;
   }
 
   .floral-bl,
   .floral-br{
-    bottom:-18px;
+    bottom:-34px;
   }
 
   .floral-stem{
@@ -1270,7 +1287,9 @@ main section>*:not(.floral-edge):not(.pattern){
   .hero-inner{
     width:100%;
     max-width:100%;
-    padding:55px 14px 45px;
+    /* FIX: top padding raised from 55px to 78px so the bismillah line
+       clears the corner florals on the narrowest phones */
+    padding:78px 14px 45px;
   }
 
   .hero-names{
@@ -1278,6 +1297,14 @@ main section>*:not(.floral-edge):not(.pattern){
   }
 
   .bismillah{font-size:13px}
+
+  /* FIX: shrink the corner florals a bit further still on very small
+     screens, where the same artwork covers proportionally more area */
+  .floral-edge{opacity:.35}
+  .floral-tl{transform:scale(.5)}
+  .floral-tr{transform:scaleX(-1) scale(.5)}
+  .floral-bl{transform:scaleY(-1) scale(.5)}
+  .floral-br{transform:scale(-.5)}
 
   .cd-wrap{
     width:100%;
