@@ -43,7 +43,8 @@
   -webkit-tap-highlight-color:transparent;
 }
 
-html,body{
+html,
+body{
   width:100%;
   max-width:100%;
   margin:0;
@@ -72,7 +73,8 @@ body.locked{
   height:100dvh;
 }
 
-button,a{
+button,
+a{
   font:inherit;
   touch-action:manipulation;
 }
@@ -104,7 +106,10 @@ main section::before{
   inset:0;
   z-index:1;
   pointer-events:none;
-  background-image:radial-gradient(rgba(255,255,255,.045) 1px,transparent 1px);
+  background-image:radial-gradient(
+    rgba(255,255,255,.045) 1px,
+    transparent 1px
+  );
   background-size:5px 5px;
   opacity:.12;
 }
@@ -137,7 +142,13 @@ main section>*:not(.floral-edge):not(.pattern){
     var(--safe-b)
     var(--safe-l);
   background:
-    radial-gradient(circle at 50% 42%,#64152d 0%,#4c0b1e 38%,#350611 68%,#21020a 100%);
+    radial-gradient(
+      circle at 50% 42%,
+      #64152d 0%,
+      #4c0b1e 38%,
+      #350611 68%,
+      #21020a 100%
+    );
   overflow:hidden;
   text-align:center;
 }
@@ -250,9 +261,16 @@ main section>*:not(.floral-edge):not(.pattern){
   justify-content:center;
   border-radius:50%;
   color:var(--cream);
-  background:radial-gradient(circle at 35% 30%,#b52f52,#641329 65%,#3b0715);
+  background:radial-gradient(
+    circle at 35% 30%,
+    #b52f52,
+    #641329 65%,
+    #3b0715
+  );
   border:2px solid var(--gold);
-  box-shadow:0 5px 20px rgba(0,0,0,.3),inset 0 0 0 4px rgba(212,175,55,.1);
+  box-shadow:
+    0 5px 20px rgba(0,0,0,.3),
+    inset 0 0 0 4px rgba(212,175,55,.1);
   font-size:clamp(15px,3.6vw,18px);
   font-weight:600;
   z-index:5;
@@ -279,10 +297,28 @@ main section>*:not(.floral-edge):not(.pattern){
   opacity:.78;
 }
 
-.floral-tl{top:-25px;left:-25px}
-.floral-tr{top:-25px;right:-25px;transform:scaleX(-1)}
-.floral-bl{bottom:-25px;left:-25px;transform:scaleY(-1)}
-.floral-br{right:-25px;bottom:-25px;transform:scale(-1)}
+.floral-tl{
+  top:-25px;
+  left:-25px;
+}
+
+.floral-tr{
+  top:-25px;
+  right:-25px;
+  transform:scaleX(-1);
+}
+
+.floral-bl{
+  bottom:-25px;
+  left:-25px;
+  transform:scaleY(-1);
+}
+
+.floral-br{
+  right:-25px;
+  bottom:-25px;
+  transform:scale(-1);
+}
 
 .floral-stem{
   position:absolute;
@@ -290,7 +326,10 @@ main section>*:not(.floral-edge):not(.pattern){
   top:3px;
   width:3px;
   height:210px;
-  background:linear-gradient(var(--leaf-light),var(--leaf-dark));
+  background:linear-gradient(
+    var(--leaf-light),
+    var(--leaf-dark)
+  );
   transform:rotate(-7deg);
 }
 
@@ -313,17 +352,46 @@ main section>*:not(.floral-edge):not(.pattern){
   transform-origin:left center;
 }
 
-.twig-1{left:17px;top:45px;transform:rotate(-28deg)}
-.twig-2{left:18px;top:82px;transform:rotate(-20deg)}
-.twig-3{left:17px;top:119px;transform:rotate(-26deg)}
-.twig-4{left:18px;top:156px;transform:rotate(-18deg)}
-.twig-5{left:19px;top:190px;width:52px;transform:rotate(-24deg)}
+.twig-1{
+  left:17px;
+  top:45px;
+  transform:rotate(-28deg);
+}
+
+.twig-2{
+  left:18px;
+  top:82px;
+  transform:rotate(-20deg);
+}
+
+.twig-3{
+  left:17px;
+  top:119px;
+  transform:rotate(-26deg);
+}
+
+.twig-4{
+  left:18px;
+  top:156px;
+  transform:rotate(-18deg);
+}
+
+.twig-5{
+  left:19px;
+  top:190px;
+  width:52px;
+  transform:rotate(-24deg);
+}
 
 .floral-leaf{
   position:absolute;
   width:36px;
   height:17px;
-  background:linear-gradient(135deg,var(--leaf-light),var(--leaf-dark));
+  background:linear-gradient(
+    135deg,
+    var(--leaf-light),
+    var(--leaf-dark)
+  );
   border-radius:100% 0 100% 0;
 }
 
@@ -363,18 +431,42 @@ main section>*:not(.floral-edge):not(.pattern){
   transform-origin:9px 13.5px;
 }
 
-.floral-flower i:nth-child(1){transform:rotate(0deg) translateY(-9px)}
-.floral-flower i:nth-child(2){transform:rotate(72deg) translateY(-9px)}
-.floral-flower i:nth-child(3){transform:rotate(144deg) translateY(-9px)}
-.floral-flower i:nth-child(4){transform:rotate(216deg) translateY(-9px)}
-.floral-flower i:nth-child(5){transform:rotate(288deg) translateY(-9px)}
+.floral-flower i:nth-child(1){
+  transform:rotate(0deg) translateY(-9px);
+}
+
+.floral-flower i:nth-child(2){
+  transform:rotate(72deg) translateY(-9px);
+}
+
+.floral-flower i:nth-child(3){
+  transform:rotate(144deg) translateY(-9px);
+}
+
+.floral-flower i:nth-child(4){
+  transform:rotate(216deg) translateY(-9px);
+}
+
+.floral-flower i:nth-child(5){
+  transform:rotate(288deg) translateY(-9px);
+}
 
 .floral-white i{
-  background:radial-gradient(circle at 35% 30%,#fff,#f8efd9 65%,#d8c8a6);
+  background:radial-gradient(
+    circle at 35% 30%,
+    #fff,
+    #f8efd9 65%,
+    #d8c8a6
+  );
 }
 
 .floral-maroon i{
-  background:radial-gradient(circle at 35% 30%,#a83a5a,#8d2946 65%,#5c1028);
+  background:radial-gradient(
+    circle at 35% 30%,
+    #a83a5a,
+    #8d2946 65%,
+    #5c1028
+  );
 }
 
 .floral-flower b{
@@ -408,9 +500,26 @@ main section>*:not(.floral-edge):not(.pattern){
   pointer-events:none;
   opacity:.075;
   background-image:
-    radial-gradient(circle at 50% 45%,rgba(212,175,55,.18),rgba(212,175,55,.055) 30%,transparent 68%),
-    linear-gradient(45deg,rgba(212,175,55,.06) 25%,transparent 25%,transparent 75%,rgba(212,175,55,.06) 75%),
-    linear-gradient(-45deg,rgba(212,175,55,.04) 25%,transparent 25%,transparent 75%,rgba(212,175,55,.04) 75%);
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(212,175,55,.18),
+      rgba(212,175,55,.055) 30%,
+      transparent 68%
+    ),
+    linear-gradient(
+      45deg,
+      rgba(212,175,55,.06) 25%,
+      transparent 25%,
+      transparent 75%,
+      rgba(212,175,55,.06) 75%
+    ),
+    linear-gradient(
+      -45deg,
+      rgba(212,175,55,.04) 25%,
+      transparent 25%,
+      transparent 75%,
+      rgba(212,175,55,.04) 75%
+    );
   background-size:100% 100%,34px 34px,34px 34px;
   mix-blend-mode:screen;
 }
@@ -423,7 +532,13 @@ main section>*:not(.floral-edge):not(.pattern){
   align-items:center;
   justify-content:center;
   text-align:center;
-  background:radial-gradient(ellipse at 50% 40%,#64152d,#4b0a1d 42%,#300510);
+  background:
+    radial-gradient(
+      ellipse at 50% 40%,
+      #64152d,
+      #4b0a1d 42%,
+      #300510
+    );
 }
 
 .hero-inner{
@@ -478,7 +593,12 @@ main section>*:not(.floral-edge):not(.pattern){
   width:100px;
   height:1px;
   margin:25px auto;
-  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  background:linear-gradient(
+    90deg,
+    transparent,
+    var(--gold),
+    transparent
+  );
 }
 
 .request-line,
@@ -553,7 +673,13 @@ main section>*:not(.floral-edge):not(.pattern){
   align-items:center;
   justify-content:center;
   text-align:center;
-  background:radial-gradient(ellipse at 50% 50%,#64152d,#4a0a1c 45%,#2d040f);
+  background:
+    radial-gradient(
+      ellipse at 50% 50%,
+      #64152d,
+      #4a0a1c 45%,
+      #2d040f
+    );
 }
 
 .cd-wrap{
@@ -620,7 +746,13 @@ main section>*:not(.floral-edge):not(.pattern){
   align-items:center;
   justify-content:center;
   text-align:center;
-  background:radial-gradient(ellipse at 50% 45%,#68152d,#4b0a1c 45%,#2f050f);
+  background:
+    radial-gradient(
+      ellipse at 50% 45%,
+      #68152d,
+      #4b0a1c 45%,
+      #2f050f
+    );
 }
 
 .celebration-wrap{
@@ -696,7 +828,12 @@ main section>*:not(.floral-edge):not(.pattern){
   width:70px;
   height:1px;
   margin:34px auto;
-  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  background:linear-gradient(
+    90deg,
+    transparent,
+    var(--gold),
+    transparent
+  );
 }
 
 .venue-art{
@@ -756,7 +893,13 @@ main section>*:not(.floral-edge):not(.pattern){
   align-items:center;
   justify-content:center;
   text-align:center;
-  background:radial-gradient(ellipse at 50% 45%,#64152d,#4b0a1c 45%,#300510);
+  background:
+    radial-gradient(
+      ellipse at 50% 45%,
+      #64152d,
+      #4b0a1c 45%,
+      #300510
+    );
 }
 
 .rsvp-wrap{
@@ -814,7 +957,10 @@ main section>*:not(.floral-edge):not(.pattern){
   font-size:8px;
   font-weight:600;
   letter-spacing:.18em;
-  transition:background .25s,color .25s,transform .25s;
+  transition:
+    background .25s,
+    color .25s,
+    transform .25s;
 }
 
 .rsvp-btn:hover,
@@ -844,7 +990,13 @@ main section>*:not(.floral-edge):not(.pattern){
   align-items:center;
   justify-content:center;
   text-align:center;
-  background:radial-gradient(ellipse at 50% 45%,#64152d,#420818 48%,#26030d);
+  background:
+    radial-gradient(
+      ellipse at 50% 45%,
+      #64152d,
+      #420818 48%,
+      #26030d
+    );
 }
 
 .close-wrap{
@@ -937,9 +1089,13 @@ main section>*:not(.floral-edge):not(.pattern){
 }
 
 
-/* ==================== MOBILE ==================== */
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media(max-width:720px){
+
+  /* ---------- COVER ---------- */
 
   #cover{
     padding:
@@ -981,103 +1137,50 @@ main section>*:not(.floral-edge):not(.pattern){
     letter-spacing:.28em;
   }
 
+
+  /* ---------- MOBILE FLORALS ----------
+     Keep the original 230px artwork,
+     then scale the ENTIRE corner.
+     This preserves proportions and prevents
+     individual elements from becoming distorted.
+  */
+
   .floral-edge{
-    width:145px;
-    height:145px;
-    opacity:.65;
+    width:230px;
+    height:230px;
+    opacity:.58;
   }
 
-  .floral-tl,
+  .floral-tl{
+    top:-82px;
+    left:-82px;
+    transform:scale(.68);
+    transform-origin:top left;
+  }
+
   .floral-tr{
-    top:-18px;
+    top:-82px;
+    right:-82px;
+    transform:scaleX(-1) scale(.68);
+    transform-origin:top right;
   }
 
-  .floral-tl,
   .floral-bl{
-    left:-18px;
+    bottom:-82px;
+    left:-82px;
+    transform:scaleY(-1) scale(.68);
+    transform-origin:bottom left;
   }
 
-  .floral-tr,
   .floral-br{
-    right:-18px;
-  }
-
-  .floral-bl,
-  .floral-br{
-    bottom:-18px;
-  }
-
-  .floral-stem{
-    height:135px;
-  }
-
-  .floral-stem::before{
-    height:75px;
-    top:35px;
-  }
-
-  .floral-twig{
-    width:46px;
-  }
-
-  .twig-1{top:34px}
-  .twig-2{top:55px}
-  .twig-3{top:78px}
-  .twig-4{top:101px}
-  .twig-5{top:124px;width:38px}
-
-  .floral-leaf{
-    width:27px;
-    height:13px;
-  }
-
-  .leaf-1{left:37px;top:28px}
-  .leaf-2{left:46px;top:43px}
-  .leaf-3{left:35px;top:56px}
-  .leaf-4{left:47px;top:72px}
-  .leaf-5{left:36px;top:85px}
-  .leaf-6{left:48px;top:100px}
-  .leaf-7{left:37px;top:113px}
-  .leaf-8{left:48px;top:126px}
-  .leaf-9{left:38px;top:137px}
-
-  .floral-flower{
-    width:38px;
-    height:38px;
-  }
-
-  .flower-a{left:60px;top:19px}
-  .flower-b{left:72px;top:45px}
-  .flower-c{left:55px;top:70px}
-  .flower-d{left:78px;top:90px}
-  .flower-e{left:60px;top:113px}
-  .flower-f{left:94px;top:29px}
-  .flower-g{left:94px;top:69px}
-
-  .floral-flower i{
-    width:15px;
-    height:22px;
-    margin:-11px 0 0 -7.5px;
-  }
-
-  .floral-flower i:nth-child(1){transform:rotate(0deg) translateY(-8px)}
-  .floral-flower i:nth-child(2){transform:rotate(72deg) translateY(-8px)}
-  .floral-flower i:nth-child(3){transform:rotate(144deg) translateY(-8px)}
-  .floral-flower i:nth-child(4){transform:rotate(216deg) translateY(-8px)}
-  .floral-flower i:nth-child(5){transform:rotate(288deg) translateY(-8px)}
-
-  .floral-flower b{
-    width:7px;
-    height:7px;
-  }
-
-  .floral-bud{
-    width:6px;
-    height:6px;
+    right:-82px;
+    bottom:-82px;
+    transform:scale(-1) scale(.68);
+    transform-origin:bottom right;
   }
 
 
-  /* Mobile section centering */
+  /* ---------- SECTIONS ---------- */
 
   #hero,
   #countdown,
@@ -1089,14 +1192,28 @@ main section>*:not(.floral-edge):not(.pattern){
     min-width:0;
   }
 
+
+  /* ---------- HERO ---------- */
+
+  #hero{
+    align-items:center;
+    justify-content:center;
+  }
+
   .hero-inner{
-    width:min(100%,390px);
+    width:100%;
     max-width:390px;
-    padding:60px 20px 50px;
-    margin:auto;
+    min-width:0;
+    margin:0 auto;
+    padding:
+      64px
+      24px
+      58px;
     display:flex;
     flex-direction:column;
     align-items:center;
+    justify-content:center;
+    text-align:center;
   }
 
   .hero-inner>*{
@@ -1110,22 +1227,51 @@ main section>*:not(.floral-edge):not(.pattern){
   .monogram,
   .hero-names,
   .request-line,
+  .hero-date,
   .hero-daymonth,
   .hero-venue-line,
   .hashtag{
     width:100%;
-    max-width:350px;
+    max-width:342px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+  }
+
+  .bismillah{
+    padding:0 3px;
+    font-size:10px;
+    letter-spacing:.11em;
+    line-height:1.75;
+  }
+
+  .together{
+    padding:0;
+  }
+
+  .monogram{
+    margin-top:14px;
   }
 
   .hero-names{
-    max-width:100%;
+    max-width:350px;
+    padding:0;
     white-space:normal;
     overflow-wrap:normal;
     word-break:normal;
+    font-size:clamp(40px,10vw,52px);
+  }
+
+  .divider{
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .request-line{
+    padding:0 2px;
   }
 
   .hero-date{
-    width:100%;
     margin-left:auto;
     margin-right:auto;
   }
@@ -1137,22 +1283,25 @@ main section>*:not(.floral-edge):not(.pattern){
   }
 
 
-  /* Countdown */
+  /* ---------- COUNTDOWN ---------- */
 
   .cd-wrap{
-    width:min(100%,390px);
+    width:100%;
     max-width:390px;
-    margin:auto;
+    min-width:0;
+    margin:0 auto;
     padding:60px 16px 50px;
     display:flex;
     flex-direction:column;
     align-items:center;
+    text-align:center;
   }
 
   .cd-script,
   .cd-until{
     width:100%;
     max-width:350px;
+    text-align:center;
   }
 
   .cd-grid{
@@ -1163,12 +1312,21 @@ main section>*:not(.floral-edge):not(.pattern){
     grid-template-columns:1fr 1fr;
     gap:22px 0;
     justify-items:center;
+    align-items:center;
   }
 
   .cd-cell{
     width:100%;
     max-width:150px;
+    margin:0 auto;
     padding:8px 4px;
+    text-align:center;
+  }
+
+  .cd-num,
+  .cd-label{
+    width:100%;
+    text-align:center;
   }
 
   .cd-divider{
@@ -1176,14 +1334,12 @@ main section>*:not(.floral-edge):not(.pattern){
   }
 
 
-  /* Celebration / RSVP / Closing */
+  /* ---------- CELEBRATION ---------- */
 
-  .celebration-wrap,
-  .rsvp-wrap,
-  .close-wrap{
-    width:min(100%,390px);
+  .celebration-wrap{
+    width:100%;
     max-width:390px;
-    margin:auto;
+    margin:0 auto;
     padding:60px 20px 50px;
   }
 
@@ -1195,6 +1351,16 @@ main section>*:not(.floral-edge):not(.pattern){
     min-width:120px;
   }
 
+
+  /* ---------- RSVP ---------- */
+
+  .rsvp-wrap{
+    width:100%;
+    max-width:390px;
+    margin:0 auto;
+    padding:60px 20px 50px;
+  }
+
   .rsvp-buttons{
     flex-direction:column;
     align-items:center;
@@ -1203,6 +1369,19 @@ main section>*:not(.floral-edge):not(.pattern){
   .rsvp-btn{
     width:min(290px,88vw);
   }
+
+
+  /* ---------- CLOSING ---------- */
+
+  .close-wrap{
+    width:100%;
+    max-width:390px;
+    margin:0 auto;
+    padding:60px 20px 50px;
+  }
+
+
+  /* ---------- DOTS ---------- */
 
   .dots{
     right:calc(10px + var(--safe-r));
@@ -1215,7 +1394,9 @@ main section>*:not(.floral-edge):not(.pattern){
 }
 
 
-/* ==================== SMALL PHONES ==================== */
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
 
 @media(max-width:380px){
 
@@ -1224,33 +1405,94 @@ main section>*:not(.floral-edge):not(.pattern){
     transform:translateY(-.5vh);
   }
 
-  .cover-top{margin-bottom:9px}
+  .cover-top{
+    margin-bottom:9px;
+  }
 
   .env-names{
     margin-bottom:13px;
     font-size:35px;
   }
 
-  .env-wrap{width:78vw}
+  .env-wrap{
+    width:78vw;
+  }
 
   .seal{
     width:48px;
     height:48px;
   }
 
-  .tap-hint{margin-top:13px}
+  .tap-hint{
+    margin-top:13px;
+  }
+
+
+  /* Smaller, farther-corner flowers */
+
+  .floral-edge{
+    opacity:.52;
+  }
+
+  .floral-tl{
+    top:-92px;
+    left:-92px;
+    transform:scale(.61);
+  }
+
+  .floral-tr{
+    top:-92px;
+    right:-92px;
+    transform:scaleX(-1) scale(.61);
+  }
+
+  .floral-bl{
+    bottom:-92px;
+    left:-92px;
+    transform:scaleY(-1) scale(.61);
+  }
+
+  .floral-br{
+    right:-92px;
+    bottom:-92px;
+    transform:scale(-1) scale(.61);
+  }
+
+
+  /* Hero */
 
   .hero-inner{
     width:100%;
     max-width:100%;
-    padding:55px 14px 45px;
+    padding:
+      58px
+      18px
+      48px;
+  }
+
+  .bismillah{
+    max-width:320px;
+    font-size:9.5px;
+    letter-spacing:.09em;
   }
 
   .hero-names{
-    font-size:clamp(34px,10.5vw,48px);
+    max-width:330px;
+    font-size:clamp(36px,10.5vw,48px);
   }
 
-  .bismillah{font-size:13px}
+  .request-line,
+  .hero-venue-line{
+    font-size:10px;
+  }
+
+  .hero-daymonth{
+    font-size:9px;
+    letter-spacing:.2em;
+  }
+
+
+  /* Other sections */
 
   .cd-wrap{
     width:100%;
@@ -1259,9 +1501,13 @@ main section>*:not(.floral-edge):not(.pattern){
     padding-right:12px;
   }
 
-  .cd-grid{max-width:300px}
+  .cd-grid{
+    max-width:300px;
+  }
 
-  .cd-cell{max-width:140px}
+  .cd-cell{
+    max-width:140px;
+  }
 
   .celebration-wrap,
   .rsvp-wrap,
@@ -1272,12 +1518,19 @@ main section>*:not(.floral-edge):not(.pattern){
     padding-right:14px;
   }
 
-  .cel-details{gap:20px 32px}
-  .cel-detail{min-width:100px}
+  .cel-details{
+    gap:20px 32px;
+  }
+
+  .cel-detail{
+    min-width:100px;
+  }
 }
 
 
-/* ==================== SHORT MOBILE ==================== */
+/* =========================================================
+   SHORT MOBILE SCREENS
+   ========================================================= */
 
 @media(max-height:600px) and (max-width:720px){
 
@@ -1286,8 +1539,13 @@ main section>*:not(.floral-edge):not(.pattern){
     padding-bottom:calc(var(--safe-b) + 8px);
   }
 
-  .cover-content{transform:translateY(0)}
-  .cover-top{margin-bottom:7px}
+  .cover-content{
+    transform:translateY(0);
+  }
+
+  .cover-top{
+    margin-bottom:7px;
+  }
 
   .env-names{
     margin-bottom:10px;
@@ -1298,15 +1556,22 @@ main section>*:not(.floral-edge):not(.pattern){
     width:min(250px,64vw);
   }
 
-  .tap-hint{margin-top:10px}
-
-  .hero-inner{
-    padding-top:56px;
-    padding-bottom:40px;
+  .tap-hint{
+    margin-top:10px;
   }
 
-  .monogram{margin-top:14px}
-  .hero-names{margin-top:10px}
+  .hero-inner{
+    padding-top:52px;
+    padding-bottom:38px;
+  }
+
+  .monogram{
+    margin-top:14px;
+  }
+
+  .hero-names{
+    margin-top:10px;
+  }
 
   .divider{
     margin-top:14px;
@@ -1320,11 +1585,15 @@ main section>*:not(.floral-edge):not(.pattern){
 }
 
 
-/* ==================== REDUCED MOTION ==================== */
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
 
 @media(prefers-reduced-motion:reduce){
 
-  html{scroll-behavior:auto}
+  html{
+    scroll-behavior:auto;
+  }
 
   *,
   *::before,
@@ -1341,42 +1610,88 @@ main section>*:not(.floral-edge):not(.pattern){
 
 <div id="progress"></div>
 
-<!-- COVER -->
-<div id="cover">
-  <div class="cover-content">
-    <div class="cover-top">Wedding Invitation</div>
-    <div class="env-names script">Arham &amp; Abeera</div>
 
-    <div class="env-wrap">
-      <div class="env-back"></div>
-      <div class="env-pocket"></div>
-      <div class="env-flap">
-        <div class="seal">A&amp;A</div>
-      </div>
+<!-- ==================== COVER ==================== -->
+
+<div id="cover">
+
+  <div class="cover-content">
+
+    <div class="cover-top">
+      Wedding Invitation
     </div>
 
-    <div class="tap-hint">TAP TO OPEN</div>
+    <div class="env-names script">
+      Arham &amp; Abeera
+    </div>
+
+    <div class="env-wrap">
+
+      <div class="env-back"></div>
+
+      <div class="env-pocket"></div>
+
+      <div class="env-flap">
+        <div class="seal">
+          A&amp;A
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tap-hint">
+      TAP TO OPEN
+    </div>
+
   </div>
+
 </div>
 
 
-<!-- NAVIGATION -->
+<!-- ==================== NAVIGATION ==================== -->
+
 <nav class="dots" id="dots">
-  <button data-target="hero" class="active" aria-label="Hero"></button>
-  <button data-target="countdown" aria-label="Countdown"></button>
-  <button data-target="celebration" aria-label="Celebration"></button>
-  <button data-target="rsvp" aria-label="RSVP"></button>
-  <button data-target="closing" aria-label="Closing"></button>
+
+  <button
+    data-target="hero"
+    class="active"
+    aria-label="Hero">
+  </button>
+
+  <button
+    data-target="countdown"
+    aria-label="Countdown">
+  </button>
+
+  <button
+    data-target="celebration"
+    aria-label="Celebration">
+  </button>
+
+  <button
+    data-target="rsvp"
+    aria-label="RSVP">
+  </button>
+
+  <button
+    data-target="closing"
+    aria-label="Closing">
+  </button>
+
 </nav>
 
 
 <main>
 
-<!-- HERO -->
+
+<!-- ==================== HERO ==================== -->
+
 <section id="hero">
+
   <div class="pattern"></div>
 
   <div class="hero-inner">
+
     <div class="bismillah hero-item">
       In the name of Allah, the Most Gracious, the Most Merciful
     </div>
@@ -1385,7 +1700,9 @@ main section>*:not(.floral-edge):not(.pattern){
       Together with their families
     </div>
 
-    <div class="monogram script hero-item">A &amp; A</div>
+    <div class="monogram script hero-item">
+      A &amp; A
+    </div>
 
     <h1 class="hero-names hero-item">
       Arham <span>&amp;</span> Abeera
@@ -1398,7 +1715,9 @@ main section>*:not(.floral-edge):not(.pattern){
       to celebrate their wedding
     </div>
 
-    <div class="hero-date hero-item">27</div>
+    <div class="hero-date hero-item">
+      27
+    </div>
 
     <div class="hero-daymonth hero-item">
       FRIDAY · NOVEMBER · 2026
@@ -1409,28 +1728,38 @@ main section>*:not(.floral-edge):not(.pattern){
       Eight o'clock in the evening
     </div>
 
-    <div class="hashtag hero-item">#ABHAM</div>
+    <div class="hashtag hero-item">
+      #ABHAM
+    </div>
+
   </div>
 
   <div class="scrollcue">
     SCROLL
     <div class="scroll-line"></div>
   </div>
+
 </section>
 
 
-<!-- COUNTDOWN -->
+<!-- ==================== COUNTDOWN ==================== -->
+
 <section id="countdown">
+
   <div class="pattern"></div>
 
   <div class="cd-wrap">
-    <div class="cd-script script cd-item">Countdown</div>
+
+    <div class="cd-script script cd-item">
+      Countdown
+    </div>
 
     <div class="cd-until cd-item">
       UNTIL 27 NOVEMBER 2026
     </div>
 
     <div class="cd-grid">
+
       <div class="cd-cell cd-item">
         <div class="cd-num" id="dd">00</div>
         <div class="cd-label">DAYS</div>
@@ -1456,20 +1785,34 @@ main section>*:not(.floral-edge):not(.pattern){
         <div class="cd-num" id="ss">00</div>
         <div class="cd-label">SECONDS</div>
       </div>
+
     </div>
+
   </div>
+
 </section>
 
 
-<!-- CELEBRATION -->
+<!-- ==================== CELEBRATION ==================== -->
+
 <section id="celebration">
+
   <div class="celebration-wrap">
 
-    <div class="cel-kicker cel-item">The Celebration</div>
-    <div class="cel-title cel-item">The Wedding</div>
-    <div class="cel-script script cel-item">Arham &amp; Abeera</div>
+    <div class="cel-kicker cel-item">
+      The Celebration
+    </div>
+
+    <div class="cel-title cel-item">
+      The Wedding
+    </div>
+
+    <div class="cel-script script cel-item">
+      Arham &amp; Abeera
+    </div>
 
     <div class="cel-details">
+
       <div class="cel-detail cel-item">
         <span>DATE</span>
         <strong>27 November 2026</strong>
@@ -1481,22 +1824,29 @@ main section>*:not(.floral-edge):not(.pattern){
         <strong>8:00 PM</strong>
         <small>In the evening</small>
       </div>
+
     </div>
 
     <div class="cel-divider cel-item"></div>
 
     <div class="venue-art cel-item">
+
       <svg viewBox="0 0 180 130" fill="none">
+
         <path d="M20 125V72L90 35L160 72V125"/>
         <path d="M43 125V80L90 55L137 80V125"/>
         <path d="M72 125V99C72 90 79 84 90 84C101 84 108 90 108 99V125"/>
         <line x1="10" y1="125" x2="170" y2="125"/>
         <circle cx="90" cy="25" r="3"/>
         <line x1="90" y1="28" x2="90" y2="35"/>
+
       </svg>
+
     </div>
 
-    <div class="venue-heading cel-item">Avenue 105</div>
+    <div class="venue-heading cel-item">
+      Avenue 105
+    </div>
 
     <div class="venue-address cel-item">
       DHA, Karachi<br>
@@ -1507,20 +1857,26 @@ main section>*:not(.floral-edge):not(.pattern){
       class="maps-link cel-item"
       href="https://www.google.com/maps/search/?api=1&query=Avenue+105+DHA+Karachi+Pakistan"
       target="_blank"
-      rel="noopener"
-    >
+      rel="noopener">
       GET DIRECTIONS
     </a>
+
   </div>
+
 </section>
 
 
-<!-- RSVP -->
+<!-- ==================== RSVP ==================== -->
+
 <section id="rsvp">
+
   <div class="pattern"></div>
 
   <div class="rsvp-wrap">
-    <div class="rsvp-script script rsvp-item">Kindly RSVP</div>
+
+    <div class="rsvp-script script rsvp-item">
+      Kindly RSVP
+    </div>
 
     <div class="rsvp-title rsvp-item">
       We would love to celebrate with you
@@ -1537,8 +1893,7 @@ main section>*:not(.floral-edge):not(.pattern){
         class="rsvp-btn rsvp-item"
         href="https://wa.me/971557640857?text=Assalamualaikum%2C%20I%20would%20like%20to%20RSVP%20for%20the%20wedding%20of%20Arham%20%26%20Abeera%20on%2027%20November%202026"
         target="_blank"
-        rel="noopener"
-      >
+        rel="noopener">
         RSVP WITH FAMILY
       </a>
 
@@ -1546,44 +1901,67 @@ main section>*:not(.floral-edge):not(.pattern){
         class="rsvp-btn secondary rsvp-item"
         href="https://wa.me/971558789140?text=Assalamualaikum%2C%20I%20would%20like%20to%20RSVP%20for%20the%20wedding%20of%20Arham%20%26%20Abeera%20on%2027%20November%202026"
         target="_blank"
-        rel="noopener"
-      >
+        rel="noopener">
         RSVP WITH ARHAM
       </a>
 
     </div>
+
   </div>
+
 </section>
 
 
-<!-- CLOSING -->
+<!-- ==================== CLOSING ==================== -->
+
 <section id="closing">
+
   <div class="close-wrap">
-    <div class="close-script script close-item">With love</div>
-    <div class="close-mono close-item">Arham &amp; Abeera</div>
-    <div class="close-hashtag close-item">#ABHAM</div>
+
+    <div class="close-script script close-item">
+      With love
+    </div>
+
+    <div class="close-mono close-item">
+      Arham &amp; Abeera
+    </div>
+
+    <div class="close-hashtag close-item">
+      #ABHAM
+    </div>
 
     <p class="close-sub close-item">
       27.11.2026 &nbsp; · &nbsp; KARACHI
     </p>
+
   </div>
+
 </section>
+
 
 </main>
 
 
 <script>
+
 /* ==================== FLORALS ==================== */
 
 function addFloralEdges(){
+
   document.querySelectorAll("main section").forEach(section=>{
+
     ["tl","tr","bl","br"].forEach(position=>{
+
       const edge=document.createElement("div");
+
       edge.className=`floral-edge floral-${position}`;
+
       edge.setAttribute("aria-hidden","true");
 
       edge.innerHTML=`
+
         <span class="floral-stem"></span>
+
         <span class="floral-twig twig-1"></span>
         <span class="floral-twig twig-2"></span>
         <span class="floral-twig twig-3"></span>
@@ -1635,8 +2013,11 @@ function addFloralEdges(){
       `;
 
       section.appendChild(edge);
+
     });
+
   });
+
 }
 
 addFloralEdges();
@@ -1656,73 +2037,119 @@ const prefersReducedMotion=window.matchMedia(
 let invitationOpened=false;
 
 function openInvitation(){
+
   if(invitationOpened)return;
+
   invitationOpened=true;
 
   const tl=gsap.timeline();
 
-  tl.to(".tap-hint",{opacity:0,duration:.25})
+  tl.to(".tap-hint",{
+      opacity:0,
+      duration:.25
+    })
+
     .to(".seal",{
       scale:.35,
       opacity:0,
       duration:.4,
       ease:"power2.in"
     })
+
     .to(".env-flap",{
       rotateX:-165,
       duration:1.1,
       ease:"power3.inOut"
     })
+
     .to(".env-wrap",{
       scale:1.04,
       y:-10,
       duration:.55,
       ease:"power2.out"
     })
+
     .to("#cover",{
       opacity:0,
       duration:.9,
       ease:"power2.inOut"
     },"+=.15")
-    .set("#cover",{visibility:"hidden"})
+
+    .set("#cover",{
+      visibility:"hidden"
+    })
+
     .call(()=>{
+
       document.body.classList.remove("locked");
+
       ScrollTrigger.refresh();
+
       startScrollAnimations();
+
     });
+
 }
 
-document.getElementById("cover").addEventListener("click",openInvitation);
+document
+  .getElementById("cover")
+  .addEventListener("click",openInvitation);
 
 
 /* ==================== SCROLL ANIMATIONS ==================== */
 
-function animate(selector,trigger,stagger=.1,duration=.8){
-  gsap.fromTo(selector,
-    {opacity:0,y:30},
+let animationsStarted=false;
+
+function animate(
+  selector,
+  trigger,
+  stagger=.1,
+  duration=.8
+){
+
+  gsap.fromTo(
+    selector,
+
+    {
+      opacity:0,
+      y:30
+    },
+
     {
       opacity:1,
       y:0,
       duration,
       stagger,
       ease:"power2.out",
+
       scrollTrigger:{
         trigger,
         start:"top 75%"
       }
     }
   );
+
 }
 
 function startScrollAnimations(){
+
   if(animationsStarted)return;
+
   animationsStarted=true;
 
   if(prefersReducedMotion){
+
     gsap.set(
       ".hero-item,.cd-item,.cel-item,.rsvp-item,.close-item",
-      {opacity:1,y:0,x:0,scale:1,rotation:0}
+      {
+        opacity:1,
+        y:0,
+        x:0,
+        scale:1,
+        rotation:0
+      }
     );
+
     return;
   }
 
@@ -1733,18 +2160,20 @@ function startScrollAnimations(){
   animate(".close-item","#closing",.13,.9);
 
   gsap.to(".hero-inner",{
+
     y:-80,
     opacity:.35,
+
     scrollTrigger:{
       trigger:"#hero",
       start:"top top",
       end:"bottom top",
       scrub:1
     }
-  });
-}
 
-let animationsStarted=false;
+  });
+
+}
 
 
 /* ==================== COUNTDOWN ==================== */
@@ -1754,66 +2183,142 @@ const weddingDate=new Date(
 ).getTime();
 
 function updateCountdown(){
-  let difference=Math.max(0,weddingDate-Date.now());
 
-  const days=Math.floor(difference/86400000);
-  const hours=Math.floor(difference%86400000/3600000);
-  const minutes=Math.floor(difference%3600000/60000);
-  const seconds=Math.floor(difference%60000/1000);
+  const difference=Math.max(
+    0,
+    weddingDate-Date.now()
+  );
 
-  document.getElementById("dd").textContent=String(days).padStart(2,"0");
-  document.getElementById("hh").textContent=String(hours).padStart(2,"0");
-  document.getElementById("mm").textContent=String(minutes).padStart(2,"0");
-  document.getElementById("ss").textContent=String(seconds).padStart(2,"0");
+  const days=Math.floor(
+    difference/86400000
+  );
+
+  const hours=Math.floor(
+    difference%86400000/3600000
+  );
+
+  const minutes=Math.floor(
+    difference%3600000/60000
+  );
+
+  const seconds=Math.floor(
+    difference%60000/1000
+  );
+
+  document.getElementById("dd").textContent=
+    String(days).padStart(2,"0");
+
+  document.getElementById("hh").textContent=
+    String(hours).padStart(2,"0");
+
+  document.getElementById("mm").textContent=
+    String(minutes).padStart(2,"0");
+
+  document.getElementById("ss").textContent=
+    String(seconds).padStart(2,"0");
+
 }
 
 updateCountdown();
+
 setInterval(updateCountdown,1000);
 
 
 /* ==================== DOT NAVIGATION ==================== */
 
-const dotButtons=document.querySelectorAll(".dots button");
+const dotButtons=
+  document.querySelectorAll(".dots button");
 
 dotButtons.forEach(button=>{
+
   button.addEventListener("click",()=>{
-    const target=document.getElementById(button.dataset.target);
-    if(target)target.scrollIntoView({behavior:"smooth"});
+
+    const target=document.getElementById(
+      button.dataset.target
+    );
+
+    if(target){
+
+      target.scrollIntoView({
+        behavior:"smooth"
+      });
+
+    }
+
   });
+
 });
 
 
 /* ==================== ACTIVE DOT ==================== */
 
-const sections=document.querySelectorAll("main section");
+const sections=
+  document.querySelectorAll("main section");
 
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting&&entry.intersectionRatio>.45){
-      dotButtons.forEach(button=>{
-        button.classList.toggle(
-          "active",
-          button.dataset.target===entry.target.id
-        );
+const observer=
+  new IntersectionObserver(
+
+    entries=>{
+
+      entries.forEach(entry=>{
+
+        if(
+          entry.isIntersecting &&
+          entry.intersectionRatio>.45
+        ){
+
+          dotButtons.forEach(button=>{
+
+            button.classList.toggle(
+              "active",
+              button.dataset.target===
+              entry.target.id
+            );
+
+          });
+
+        }
+
       });
-    }
-  });
-},{
-  threshold:[.45,.6]
-});
 
-sections.forEach(section=>observer.observe(section));
+    },
+
+    {
+      threshold:[.45,.6]
+    }
+
+  );
+
+sections.forEach(section=>{
+  observer.observe(section);
+});
 
 
 /* ==================== PROGRESS ==================== */
 
 function updateProgress(){
-  const max=document.documentElement.scrollHeight-window.innerHeight;
-  const progress=max>0?(window.scrollY/max)*100:0;
-  document.getElementById("progress").style.width=`${progress}%`;
+
+  const max=
+    document.documentElement.scrollHeight-
+    window.innerHeight;
+
+  const progress=
+    max>0
+      ? window.scrollY/max*100
+      : 0;
+
+  document.getElementById(
+    "progress"
+  ).style.width=`${progress}%`;
+
 }
 
-window.addEventListener("scroll",updateProgress,{passive:true});
+window.addEventListener(
+  "scroll",
+  updateProgress,
+  {passive:true}
+);
+
 updateProgress();
 
 
@@ -1822,15 +2327,32 @@ updateProgress();
 let resizeTimer;
 
 function handleViewportChange(){
+
   clearTimeout(resizeTimer);
-  resizeTimer=setTimeout(()=>ScrollTrigger.refresh(),150);
+
+  resizeTimer=setTimeout(
+    ()=>ScrollTrigger.refresh(),
+    150
+  );
+
 }
 
-window.addEventListener("resize",handleViewportChange);
-window.addEventListener("orientationchange",handleViewportChange);
+window.addEventListener(
+  "resize",
+  handleViewportChange
+);
+
+window.addEventListener(
+  "orientationchange",
+  handleViewportChange
+);
 
 if(document.fonts?.ready){
-  document.fonts.ready.then(()=>ScrollTrigger.refresh());
+
+  document.fonts.ready.then(
+    ()=>ScrollTrigger.refresh()
+  );
+
 }
 
 
@@ -1838,8 +2360,11 @@ if(document.fonts?.ready){
 
 gsap.set(
   ".hero-item,.cd-item,.cel-item,.rsvp-item,.close-item",
-  {opacity:0}
+  {
+    opacity:0
+  }
 );
+
 </script>
 
 </body>
